@@ -1,10 +1,11 @@
-package com.yusufcanmercan.weight_track_app
+package com.yusufcanmercan.weight_track_app.ui.view.main
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
