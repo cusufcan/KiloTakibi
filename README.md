@@ -1,4 +1,4 @@
-# 📱 TOGÜ Yemekhane
+# 📱 Kilo Takibi
 
 Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip etmesini, grafik ile kilo grafiğini günlük, haftalık, aylık ve yıllık olmak üzere görmesini amaçlayan basit bir uygulama.
 
