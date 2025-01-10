@@ -313,3 +313,6 @@ obj/
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
+
+### Mercan Config ###
+/app/release
