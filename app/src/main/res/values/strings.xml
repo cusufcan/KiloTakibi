@@ -9,4 +9,5 @@
     <string name="weekly">Weekly</string>
     <string name="monthly">Monthly</string>
     <string name="weight_icon">Weight Icon</string>
+    <string name="weight_str">%skg</string>
 </resources>
