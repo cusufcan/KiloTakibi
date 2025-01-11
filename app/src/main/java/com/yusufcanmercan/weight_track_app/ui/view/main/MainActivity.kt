@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
 import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
@@ -16,8 +17,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var materialToolbar: CustomToolbarBinding
+
     private lateinit var fragmentContainerView: FragmentContainerView
     private lateinit var navHostFragment: NavHostFragment
+
+    private lateinit var floatingActionButton: FloatingActionButton
     private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,10 +57,18 @@ class MainActivity : AppCompatActivity() {
             fragmentContainerView.id
         ) as NavHostFragment
 
+        floatingActionButton = binding.floatingActionButton
         bottomNavigationView = binding.bottomNavigationView
     }
 
     private fun bindEvents() {
         bottomNavigationView.setupWithNavController(navHostFragment.navController)
+
+        navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> floatingActionButton.show()
+                R.id.graphFragment -> floatingActionButton.hide()
+            }
+        }
     }
 }
