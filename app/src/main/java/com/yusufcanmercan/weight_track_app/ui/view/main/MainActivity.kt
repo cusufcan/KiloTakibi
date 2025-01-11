@@ -1,7 +1,6 @@
 package com.yusufcanmercan.weight_track_app.ui.view.main
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -11,10 +10,12 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
+import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
+    private lateinit var materialToolbar: CustomToolbarBinding
     private lateinit var fragmentContainerView: FragmentContainerView
     private lateinit var navHostFragment: NavHostFragment
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -34,7 +35,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun defaultActivityCodes() {
-        enableEdgeToEdge()
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindViews() {
+        materialToolbar = binding.toolBar
+        setSupportActionBar(materialToolbar.customToolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
         fragmentContainerView = binding.fragmentContainerView
         navHostFragment = supportFragmentManager.findFragmentById(
             fragmentContainerView.id
