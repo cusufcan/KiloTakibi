@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+
+    id("kotlin-kapt")
 }
 
 android {
@@ -50,4 +52,8 @@ dependencies {
     // Jetpack Navigation
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+
+    // Jetpack Lifecycle
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    kapt(libs.androidx.lifecycle.compiler)
 }
