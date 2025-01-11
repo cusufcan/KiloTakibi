@@ -2,7 +2,10 @@
 
     <style name="Base.Theme.KiloTakibi" parent="Theme.Material3.DayNight.NoActionBar" />
 
-    <style name="Theme.KiloTakibi" parent="Base.Theme.KiloTakibi" />
+    <style name="Theme.KiloTakibi" parent="Base.Theme.KiloTakibi">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary</item>
+    </style>
 
     <style name="Theme.MyApp.Splash" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@color/primary</item>
