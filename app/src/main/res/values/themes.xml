@@ -4,9 +4,7 @@
 
     <style name="Theme.KiloTakibi" parent="Base.Theme.KiloTakibi" />
 
-    <!-- Splash Ekran Teması -->
     <style name="Theme.MyApp.Splash" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Splash ekranın arka plan rengi -->
         <item name="android:windowBackground">@color/primary</item>
     </style>
 </resources>
