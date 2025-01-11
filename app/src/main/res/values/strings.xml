@@ -4,4 +4,8 @@
     <string name="home">Anasayfa</string>
     <string name="graph">Grafik</string>
     <string name="add">Add</string>
+    <string name="current">Current</string>
+    <string name="change">Change</string>
+    <string name="weekly">Weekly</string>
+    <string name="monthly">Monthly</string>
 </resources>
