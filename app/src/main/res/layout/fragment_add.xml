@@ -45,7 +45,7 @@
         android:layout_marginHorizontal="16dp"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="."
+        android:text="@string/dot"
         android:textAlignment="center"
         android:textAppearance="?attr/textAppearanceTitleLarge"
         app:layout_constraintBottom_toBottomOf="@id/inputLayoutWeightDigitOne"
