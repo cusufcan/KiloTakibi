@@ -72,9 +72,24 @@ class MainActivity : AppCompatActivity() {
 
         navHostFragment.navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.homeFragment -> floatingActionButton.show()
-                R.id.graphFragment -> floatingActionButton.hide()
+                R.id.homeFragment -> fabOnDestinationChangeLogic(true)
+                R.id.graphFragment -> fabOnDestinationChangeLogic(false)
             }
         }
+
+        floatingActionButton.setOnClickListener { openAddDialogFragment() }
+    }
+
+    private fun fabOnDestinationChangeLogic(enable: Boolean) {
+        floatingActionButton.isEnabled = enable
+        if (enable) {
+            floatingActionButton.show()
+        } else {
+            floatingActionButton.hide()
+        }
+    }
+
+    private fun openAddDialogFragment() {
+        navHostFragment.navController.navigate(R.id.action_homeFragment_to_addFragment)
     }
 }
