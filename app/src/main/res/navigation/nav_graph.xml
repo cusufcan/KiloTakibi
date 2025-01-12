@@ -9,10 +9,19 @@
         android:id="@+id/homeFragment"
         android:name="com.yusufcanmercan.weight_track_app.ui.view.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_addFragment"
+            app:destination="@id/addFragment" />
+    </fragment>
     <fragment
         android:id="@+id/graphFragment"
         android:name="com.yusufcanmercan.weight_track_app.ui.view.graph.GraphFragment"
         android:label="fragment_graph"
         tools:layout="@layout/fragment_graph" />
+    <dialog
+        android:id="@+id/addFragment"
+        android:name="com.yusufcanmercan.weight_track_app.ui.view.add.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" />
 </navigation>
