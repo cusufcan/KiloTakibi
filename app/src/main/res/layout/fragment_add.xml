@@ -3,70 +3,101 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="24dp"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:paddingHorizontal="32dp"
+    android:paddingVertical="24dp"
     tools:context=".ui.view.add.AddFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="Ekle"
-        android:textAlignment="center"
+        android:text="@string/add_a_record"
+        android:textAppearance="?attr/textAppearanceTitleLarge"
+        app:layout_constraintBottom_toBottomOf="@id/tvBtnClose"
+        app:layout_constraintEnd_toStartOf="@id/tvBtnClose"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvBtnClose" />
+
+    <TextView
+        android:id="@+id/tvBtnClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="@string/x"
         android:textAppearance="?attr/textAppearanceTitleLarge"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayoutWeightDigitOne"
+        android:id="@+id/elWeight"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:layout_constraintEnd_toStartOf="@id/tvDot"
+        android:layout_marginTop="12dp"
+        app:boxCornerRadiusBottomEnd="8dp"
+        app:boxCornerRadiusBottomStart="8dp"
+        app:boxCornerRadiusTopEnd="8dp"
+        app:boxCornerRadiusTopStart="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etWeight"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="numberDecimal" />
+            android:hint="@string/weight"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvDot"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPickDate"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/dot"
-        android:textAlignment="center"
-        android:textAppearance="?attr/textAppearanceTitleLarge"
-        app:layout_constraintBottom_toBottomOf="@id/inputLayoutWeightDigitOne"
-        app:layout_constraintEnd_toStartOf="@id/inputLayoutWeightDigitTwo"
-        app:layout_constraintStart_toEndOf="@id/inputLayoutWeightDigitOne" />
+        android:layout_marginTop="8dp"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
+        android:paddingHorizontal="18dp"
+        android:textAlignment="textStart"
+        app:cornerRadius="8dp"
+        app:icon="@drawable/ic_calendar_outlined"
+        app:iconGravity="end"
+        app:layout_constraintEnd_toEndOf="@id/elWeight"
+        app:layout_constraintStart_toStartOf="@id/elWeight"
+        app:layout_constraintTop_toBottomOf="@id/elWeight" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayoutWeightDigitTwo"
-        android:layout_width="wrap_content"
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnClose"
+        style="@style/Widget.Material3.Button.ElevatedButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:boxCornerRadiusBottomEnd="16dp"
-        app:boxCornerRadiusBottomStart="16dp"
-        app:boxCornerRadiusTopEnd="16dp"
-        app:boxCornerRadiusTopStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/tvDot"
-        app:layout_constraintTop_toBottomOf="@id/tvTitle">
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="12dp"
+        android:text="@string/cancel"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toStartOf="@id/btnOk"
+        app:layout_constraintStart_toStartOf="@id/btnPickDate"
+        app:layout_constraintTop_toBottomOf="@id/btnPickDate" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="numberDecimal" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOk"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:enabled="false"
+        android:text="@string/ok"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="@id/btnPickDate"
+        app:layout_constraintStart_toEndOf="@id/btnClose"
+        app:layout_constraintTop_toBottomOf="@id/btnPickDate" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
