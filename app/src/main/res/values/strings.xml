@@ -10,5 +10,7 @@
     <string name="monthly">Monthly</string>
     <string name="weight_icon">Weight Icon</string>
     <string name="weight_str">%skg</string>
-    <string name="dot">.</string>
+    <string name="add_a_record">Add a record</string>
+    <string name="x">x</string>
+    <string name="weight">Weight</string>
 </resources>
