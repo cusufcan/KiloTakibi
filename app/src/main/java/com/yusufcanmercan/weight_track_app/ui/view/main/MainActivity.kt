@@ -14,13 +14,15 @@ import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
 import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var materialToolbar: CustomToolbarBinding
 
-    private lateinit var fragmentContainerView: FragmentContainerView
+    lateinit var fragmentContainerView: FragmentContainerView
     private lateinit var navHostFragment: NavHostFragment
 
     private lateinit var floatingActionButton: FloatingActionButton
