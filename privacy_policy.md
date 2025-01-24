@@ -59,4 +59,4 @@ This policy is effective as of 2023-04-04
 
 **Contact Us**
 
-If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at cusufcan@gmail.com.
+If you have any questions or suggestions about my Privacy Policy, do not hesitate to contact me at yusufcanmercan.info@gmail.com.
