@@ -6,6 +6,6 @@ import java.util.Locale
 
 fun today(): String {
     val today = Date()
-    val formatter = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+    val formatter = SimpleDateFormat("dd MMMM yyyy", Locale("tr", "TR"))
     return formatter.format(today)
 }
