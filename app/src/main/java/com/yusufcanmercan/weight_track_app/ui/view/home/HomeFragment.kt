@@ -1,9 +1,11 @@
 package com.yusufcanmercan.weight_track_app.ui.view.home
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -17,6 +19,7 @@ import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentHomeBinding
 import com.yusufcanmercan.weight_track_app.ui.adapter.WeightAdapter
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
+import com.yusufcanmercan.weight_track_app.ui.view.main.MainActivity
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import kotlinx.coroutines.launch
 
@@ -79,6 +82,8 @@ class HomeFragment : Fragment() {
         progressBar.visibility = View.VISIBLE
         recyclerView.visibility = View.GONE
         etEmpty.visibility = View.GONE
+
+        changeGravity(Gravity.CENTER)
     }
 
     private fun successLogic(weights: List<Weight>) {
@@ -87,9 +92,11 @@ class HomeFragment : Fragment() {
         if (weights.isEmpty()) {
             etEmpty.visibility = View.VISIBLE
             recyclerView.visibility = View.GONE
+            changeGravity(Gravity.CENTER)
         } else {
             etEmpty.visibility = View.GONE
             recyclerView.visibility = View.VISIBLE
+            changeGravity(Gravity.TOP)
         }
 
         val adapter = WeightAdapter(weights)
@@ -102,6 +109,16 @@ class HomeFragment : Fragment() {
         etEmpty.visibility = View.VISIBLE
 
         etEmpty.text = message
+
+        changeGravity(Gravity.CENTER)
+    }
+
+    private fun changeGravity(gravity: Int) {
+        val mainActivity = activity as MainActivity
+        val fragmentContainerView = mainActivity.fragmentContainerView
+        val layoutParams = fragmentContainerView.layoutParams as FrameLayout.LayoutParams
+        layoutParams.gravity = gravity
+        fragmentContainerView.layoutParams = layoutParams
     }
 
     override fun onDestroyView() {
