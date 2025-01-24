@@ -1,24 +1,52 @@
 package com.yusufcanmercan.weight_track_app.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.yusufcanmercan.weight_track_app.data.model.Weight
+import com.yusufcanmercan.weight_track_app.data.repository.WeightRepository
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlin.random.Random
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WeightViewModel : ViewModel() {
+@HiltViewModel
+class WeightViewModel @Inject constructor(
+    private val weightRepository: WeightRepository,
+) : ViewModel() {
     private var _weights = MutableStateFlow<WeightUIState>(WeightUIState.Loading)
     val weights: StateFlow<WeightUIState> = _weights
 
     fun fetchData() {
-        val weights = mutableListOf<Weight>()
-        repeat(50) {
-            val weight = Random.nextDouble() * 100.0
-            val date = "${Random.nextInt(30 + 1)}.${Random.nextInt(12) + 1}.2024"
-
-            weights.add(Weight(weight, date))
+        viewModelScope.launch {
+            try {
+                val weights = weightRepository.getAllWeights()
+                _weights.value = WeightUIState.Success(weights)
+            } catch (e: Exception) {
+                _weights.value = WeightUIState.Error(e.message ?: "Unknown error")
+            }
         }
-        _weights.value = WeightUIState.Success(weights)
+    }
+
+    fun addWeight(weight: Weight) {
+        viewModelScope.launch {
+            weightRepository.addWeight(weight)
+            _weights.value = WeightUIState.Success(weightRepository.getAllWeights())
+        }
+    }
+
+    fun updateWeight(weight: Weight) {
+        viewModelScope.launch {
+            weightRepository.updateWeight(weight)
+            _weights.value = WeightUIState.Success(weightRepository.getAllWeights())
+        }
+    }
+
+    fun deleteWeight(weight: Weight) {
+        viewModelScope.launch {
+            weightRepository.deleteWeight(weight)
+            _weights.value = WeightUIState.Success(weightRepository.getAllWeights())
+        }
     }
 }
