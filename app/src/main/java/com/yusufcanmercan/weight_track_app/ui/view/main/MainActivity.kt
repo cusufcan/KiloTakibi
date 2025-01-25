@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var materialToolbar: CustomToolbarBinding
 
-    lateinit var fragmentContainerView: FragmentContainerView
+    private lateinit var fragmentContainerView: FragmentContainerView
     private lateinit var navHostFragment: NavHostFragment
 
     private lateinit var floatingActionButton: FloatingActionButton
