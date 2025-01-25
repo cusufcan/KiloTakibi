@@ -92,7 +92,7 @@ class HomeFragment : Fragment() {
             recyclerView.visibility = View.VISIBLE
         }
 
-        val adapter = WeightAdapter(weights)
+        val adapter = WeightAdapter(weights, ::onWeightLongClick)
         recyclerView.adapter = adapter
     }
 
@@ -102,6 +102,10 @@ class HomeFragment : Fragment() {
         etEmpty.visibility = View.VISIBLE
 
         etEmpty.text = message
+    }
+
+    private fun onWeightLongClick(weight: Weight) {
+        findNavController().navigate(R.id.action_homeFragment_to_editFragment)
     }
 
     override fun onDestroyView() {
