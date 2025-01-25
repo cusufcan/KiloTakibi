@@ -21,7 +21,7 @@ class WeightRepository @Inject constructor(
 
     suspend fun updateWeight(weight: Weight): Boolean {
         val weights = getAllWeights()
-        if (weights.any { it.date == weight.date }) return false
+        if (weights.any { it.date == weight.date && it.id != weight.id }) return false
         weightLocalSource.updateWeight(weight)
         return true
     }
