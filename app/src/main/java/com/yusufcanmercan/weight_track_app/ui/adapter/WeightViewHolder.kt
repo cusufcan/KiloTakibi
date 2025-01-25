@@ -11,7 +11,7 @@ class WeightViewHolder(
     private val onWeightLongClick: (Weight) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(weight: Weight) {
-        val weightString = String.format(Locale.getDefault(), "%.2f", weight.weight)
+        val weightString = String.format(Locale("tr", "TR"), "%.2f", weight.weight)
 
         binding.tvWeight.text = binding.root.context.getString(R.string.weight_str, weightString)
         binding.tvDate.text = weight.date
