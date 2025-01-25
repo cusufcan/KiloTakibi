@@ -12,15 +12,14 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
+import com.yusufcanmercan.weight_track_app.core.Constants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentAddBinding
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.today
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
 import java.util.Calendar
-import java.util.Locale
 
 @AndroidEntryPoint
 class AddFragment : BottomSheetDialogFragment() {
@@ -34,7 +33,6 @@ class AddFragment : BottomSheetDialogFragment() {
     private lateinit var btnOk: MaterialButton
 
     private lateinit var calendar: Calendar
-    private lateinit var formatterShow: SimpleDateFormat
 
     private val weightViewModel: WeightViewModel by activityViewModels()
 
@@ -55,7 +53,6 @@ class AddFragment : BottomSheetDialogFragment() {
 
     private fun bindVariables() {
         calendar = Calendar.getInstance()
-        formatterShow = SimpleDateFormat("dd MMMM yyyy", Locale("tr", "TR"))
     }
 
     private fun bindViews() {
@@ -91,7 +88,7 @@ class AddFragment : BottomSheetDialogFragment() {
                     set(Calendar.MONTH, month)
                     set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 }
-                btnPickDate.text = formatterShow.format(calendar.time)
+                btnPickDate.text = Constants.formatter.format(calendar.time)
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
