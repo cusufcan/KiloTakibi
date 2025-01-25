@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
@@ -16,6 +17,7 @@ import com.yusufcanmercan.weight_track_app.databinding.FragmentAddBinding
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.today
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -106,7 +108,13 @@ class AddFragment : BottomSheetDialogFragment() {
         val date = btnPickDate.text.toString()
 
         val weight = Weight(weightNumber, date)
-        weightViewModel.addWeight(weight)
-        dismissDialog()
+        lifecycleScope.launch {
+            val response = weightViewModel.addWeight(weight)
+            if (response) {
+                dismissDialog()
+            } else {
+                etWeight.error = "Bu tarihte veri zaten eklenmiş"
+            }
+        }
     }
 }
