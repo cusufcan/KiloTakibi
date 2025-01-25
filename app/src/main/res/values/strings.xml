@@ -11,8 +11,10 @@
     <string name="weight_icon">Kilo İkonu</string>
     <string name="weight_str">%skg</string>
     <string name="add_a_record">Yeni kayıt ekle</string>
+    <string name="update">Güncelle</string>
     <string name="x">x</string>
     <string name="weight">Kilo</string>
     <string name="cancel">İptal</string>
     <string name="ok">Tamam</string>
+    <string name="pick_date">Tarih Seç</string>
 </resources>
