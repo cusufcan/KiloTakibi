@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
+import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.core.Constants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentAddBinding
@@ -110,7 +111,7 @@ class AddFragment : BottomSheetDialogFragment() {
             if (response) {
                 dismissDialog()
             } else {
-                etWeight.error = "Bu tarihte veri zaten eklenmiş"
+                etWeight.error = getString(R.string.error_weight_already_exist)
             }
         }
     }
