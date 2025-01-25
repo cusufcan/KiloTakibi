@@ -30,11 +30,9 @@ class WeightViewModel @Inject constructor(
     }
 
     suspend fun addWeight(weight: Weight): Boolean {
-        if (checkDateExists(weight)) return false
-
-        weightRepository.addWeight(weight)
+        val response = weightRepository.addWeight(weight)
+        if (!response) return false
         updateWeightData()
-
         return true
     }
 
@@ -57,10 +55,5 @@ class WeightViewModel @Inject constructor(
     private suspend fun updateWeightData() {
         val weights = weights()
         _weights.value = WeightUIState.Success(weights)
-    }
-
-    private suspend fun checkDateExists(weight: Weight): Boolean {
-        val oldWeights = weights()
-        return oldWeights.any { it.date == weight.date }
     }
 }
