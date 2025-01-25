@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat
 import java.util.Locale
 
 object Constants {
-    val locale = Locale("tr", "TR")
-    val formatter = SimpleDateFormat("dd MMMM yyyy", locale)
+    val localeEn: Locale = Locale.ENGLISH
+    private val localeTr = Locale("tr", "TR")
+    val formatter = SimpleDateFormat("dd MMMM yyyy", localeTr)
 }
