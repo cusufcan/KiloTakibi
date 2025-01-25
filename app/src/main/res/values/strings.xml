@@ -17,4 +17,5 @@
     <string name="cancel">İptal</string>
     <string name="ok">Tamam</string>
     <string name="pick_date">Tarih Seç</string>
+    <string name="error_weight_already_exist">Bu tarihte veri zaten eklenmiş</string>
 </resources>
