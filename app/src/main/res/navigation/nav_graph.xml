@@ -31,5 +31,9 @@
         android:id="@+id/editFragment"
         android:name="com.yusufcanmercan.weight_track_app.ui.view.EditFragment"
         android:label="fragment_edit"
-        tools:layout="@layout/fragment_edit" />
+        tools:layout="@layout/fragment_edit">
+        <argument
+            android:name="weight"
+            app:argType="com.yusufcanmercan.weight_track_app.data.model.Weight" />
+    </dialog>
 </navigation>
