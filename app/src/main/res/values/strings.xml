@@ -3,16 +3,16 @@
 
     <string name="home">Anasayfa</string>
     <string name="graph">Grafik</string>
-    <string name="add">Add</string>
-    <string name="current">Current</string>
-    <string name="change">Change</string>
-    <string name="weekly">Weekly</string>
-    <string name="monthly">Monthly</string>
-    <string name="weight_icon">Weight Icon</string>
+    <string name="add">Ekle</string>
+    <string name="current">Güncel</string>
+    <string name="change">Değişim</string>
+    <string name="weekly">Haftalık</string>
+    <string name="monthly">Aylık</string>
+    <string name="weight_icon">Kilo İkonu</string>
     <string name="weight_str">%skg</string>
-    <string name="add_a_record">Add a record</string>
+    <string name="add_a_record">Yeni kayıt ekle</string>
     <string name="x">x</string>
-    <string name="weight">Weight</string>
-    <string name="cancel">Cancel</string>
-    <string name="ok">OK</string>
+    <string name="weight">Kilo</string>
+    <string name="cancel">İptal</string>
+    <string name="ok">Tamam</string>
 </resources>
