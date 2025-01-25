@@ -12,7 +12,6 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
-import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentHomeBinding
 import com.yusufcanmercan.weight_track_app.ui.adapter.WeightAdapter
@@ -59,7 +58,8 @@ class HomeFragment : Fragment() {
 
     private fun bindEvents() {
         etEmpty.setOnClickListener {
-            navController.navigate(R.id.action_homeFragment_to_addFragment)
+            val direction = HomeFragmentDirections.actionHomeFragmentToAddFragment()
+            navController.navigate(direction)
         }
     }
 
@@ -105,7 +105,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun onWeightLongClick(weight: Weight) {
-        findNavController().navigate(R.id.action_homeFragment_to_editFragment)
+        val direction = HomeFragmentDirections.actionHomeFragmentToEditFragment(weight)
+        findNavController().navigate(direction)
     }
 
     override fun onDestroyView() {

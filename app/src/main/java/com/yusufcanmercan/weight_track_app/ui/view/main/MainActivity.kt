@@ -13,6 +13,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
 import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
+import com.yusufcanmercan.weight_track_app.ui.view.home.HomeFragmentDirections
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -92,6 +93,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openAddDialogFragment() {
-        navHostFragment.navController.navigate(R.id.action_homeFragment_to_addFragment)
+        val direction = HomeFragmentDirections.actionHomeFragmentToAddFragment()
+        navHostFragment.navController.navigate(direction)
     }
 }
