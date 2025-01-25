@@ -107,7 +107,7 @@ class AddFragment : BottomSheetDialogFragment() {
         val weightNumber = etWeight.text.toString().toDouble()
         val date = btnPickDate.text.toString()
 
-        val weight = Weight(weightNumber, date)
+        val weight = Weight(weight = weightNumber, date = date)
         lifecycleScope.launch {
             val response = weightViewModel.addWeight(weight)
             if (response) {
