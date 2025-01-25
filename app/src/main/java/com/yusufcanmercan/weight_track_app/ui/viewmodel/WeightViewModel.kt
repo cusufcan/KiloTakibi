@@ -36,11 +36,11 @@ class WeightViewModel @Inject constructor(
         return true
     }
 
-    fun updateWeight(weight: Weight) {
-        viewModelScope.launch {
-            weightRepository.updateWeight(weight)
-            updateWeightData()
-        }
+    suspend fun updateWeight(weight: Weight): Boolean {
+        val response = weightRepository.updateWeight(weight)
+        if (!response) return false
+        updateWeightData()
+        return true
     }
 
     fun deleteWeight(weight: Weight) {
