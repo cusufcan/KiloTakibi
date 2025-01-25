@@ -8,7 +8,6 @@ import com.yusufcanmercan.weight_track_app.databinding.WeightListItemBinding
 
 class WeightAdapter(
     private val weights: List<Weight>,
-    private val onWeightClick: (Weight) -> Unit,
     private val onWeightLongClick: (Weight) -> Unit,
 ) : RecyclerView.Adapter<WeightViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeightViewHolder {
@@ -18,11 +17,7 @@ class WeightAdapter(
             false,
         )
 
-        return WeightViewHolder(
-            binding,
-            onWeightClick,
-            onWeightLongClick,
-        )
+        return WeightViewHolder(binding, onWeightLongClick)
     }
 
     override fun onBindViewHolder(holder: WeightViewHolder, position: Int) {

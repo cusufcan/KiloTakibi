@@ -8,7 +8,6 @@ import java.util.Locale
 
 class WeightViewHolder(
     private val binding: WeightListItemBinding,
-    private val onWeightClick: (Weight) -> Unit,
     private val onWeightLongClick: (Weight) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(weight: Weight) {
@@ -17,7 +16,6 @@ class WeightViewHolder(
         binding.tvWeight.text = binding.root.context.getString(R.string.weight_str, weightString)
         binding.tvDate.text = weight.date
 
-        binding.root.setOnClickListener { onWeightClick(weight) }
         binding.root.setOnLongClickListener {
             onWeightLongClick(weight)
             true
