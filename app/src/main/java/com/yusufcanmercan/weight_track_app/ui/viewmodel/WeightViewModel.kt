@@ -21,7 +21,7 @@ class WeightViewModel @Inject constructor(
     fun fetchData() {
         viewModelScope.launch {
             try {
-                val weights = weightRepository.getAllWeights()
+                val weights = weights()
                 _weights.value = WeightUIState.Success(weights)
             } catch (e: Exception) {
                 _weights.value = WeightUIState.Error(e.message ?: "Unknown error")
@@ -29,24 +29,38 @@ class WeightViewModel @Inject constructor(
         }
     }
 
-    fun addWeight(weight: Weight) {
-        viewModelScope.launch {
-            weightRepository.addWeight(weight)
-            _weights.value = WeightUIState.Success(weightRepository.getAllWeights())
-        }
+    suspend fun addWeight(weight: Weight): Boolean {
+        if (checkDateExists(weight)) return false
+
+        weightRepository.addWeight(weight)
+        updateWeightData()
+
+        return true
     }
 
     fun updateWeight(weight: Weight) {
         viewModelScope.launch {
             weightRepository.updateWeight(weight)
-            _weights.value = WeightUIState.Success(weightRepository.getAllWeights())
+            updateWeightData()
         }
     }
 
     fun deleteWeight(weight: Weight) {
         viewModelScope.launch {
             weightRepository.deleteWeight(weight)
-            _weights.value = WeightUIState.Success(weightRepository.getAllWeights())
+            updateWeightData()
         }
+    }
+
+    private suspend fun weights() = weightRepository.getAllWeights()
+
+    private suspend fun updateWeightData() {
+        val weights = weights()
+        _weights.value = WeightUIState.Success(weights)
+    }
+
+    private suspend fun checkDateExists(weight: Weight): Boolean {
+        val oldWeights = weights()
+        return oldWeights.any { it.date == weight.date }
     }
 }
