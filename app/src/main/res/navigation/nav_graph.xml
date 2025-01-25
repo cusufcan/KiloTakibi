@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_add" />
     <dialog
         android:id="@+id/editFragment"
-        android:name="com.yusufcanmercan.weight_track_app.ui.view.EditFragment"
+        android:name="com.yusufcanmercan.weight_track_app.ui.view.edit.EditFragment"
         android:label="fragment_edit"
         tools:layout="@layout/fragment_edit">
         <argument
