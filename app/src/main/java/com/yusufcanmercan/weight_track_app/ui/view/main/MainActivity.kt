@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentContainerView
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -13,15 +14,18 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
 import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
+import com.yusufcanmercan.weight_track_app.databinding.MainCardBinding
 import com.yusufcanmercan.weight_track_app.ui.view.home.HomeFragmentDirections
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
     private lateinit var materialToolbar: CustomToolbarBinding
+    private lateinit var mainCard: MainCardBinding
 
     private lateinit var fragmentContainerView: FragmentContainerView
     private lateinit var navHostFragment: NavHostFragment
@@ -35,12 +39,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_KiloTakibi)
 
-        weightViewModel.fetchData()
-
         bindingCodes()
         defaultActivityCodes()
         bindViews()
         bindEvents()
+        fetchData()
+        observeData()
     }
 
     private fun bindingCodes() {
@@ -60,6 +64,8 @@ class MainActivity : AppCompatActivity() {
         materialToolbar = binding.toolBar
         setSupportActionBar(materialToolbar.customToolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        mainCard = binding.mainCard
 
         fragmentContainerView = binding.fragmentContainerView
         navHostFragment = supportFragmentManager.findFragmentById(
@@ -81,6 +87,21 @@ class MainActivity : AppCompatActivity() {
         }
 
         floatingActionButton.setOnClickListener { openAddDialogFragment() }
+    }
+
+    private fun fetchData() {
+        weightViewModel.fetchData()
+    }
+
+    private fun observeData() {
+        lifecycleScope.launch {
+            weightViewModel.weightStat.collect {
+                mainCard.tvCurrent.text = it.current.toString()
+                mainCard.tvChange.text = it.change.toString()
+                mainCard.tvWeekly.text = it.weekly.toString()
+                mainCard.tvMonthly.text = it.monthly.toString()
+            }
+        }
     }
 
     private fun fabOnDestinationChangeLogic(enable: Boolean) {
