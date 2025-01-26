@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardUseCompatPadding="true"
-    app:contentPaddingBottom="16dp"
-    app:contentPaddingTop="16dp">
+    app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,13 +13,14 @@
             android:id="@+id/tvCurrentName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/current"
             android:textAlignment="center"
             android:textAppearance="?attr/textAppearanceBodyLarge"
             app:layout_constraintBottom_toTopOf="@id/tvCurrent"
-            app:layout_constraintEnd_toStartOf="@id/tvChangeName"
+            app:layout_constraintEnd_toStartOf="@id/verticalDivider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -36,14 +35,33 @@
             android:textAppearance="?attr/textAppearanceTitleLarge"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tvWeeklyName"
-            app:layout_constraintEnd_toStartOf="@id/tvChange"
+            app:layout_constraintEnd_toStartOf="@id/verticalDivider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCurrentName" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/verticalDivider"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tvChange"
+            app:layout_constraintStart_toEndOf="@id/tvCurrent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.divider.MaterialDivider
+            android:id="@+id/horizontalDivider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toTopOf="@id/tvWeeklyName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvCurrent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvChangeName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/change"
@@ -51,7 +69,7 @@
             android:textAppearance="?attr/textAppearanceBodyLarge"
             app:layout_constraintBottom_toTopOf="@+id/tvChange"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvCurrentName"
+            app:layout_constraintStart_toEndOf="@id/verticalDivider"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -66,7 +84,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tvMonthlyName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvWeeklyName"
+            app:layout_constraintStart_toEndOf="@id/verticalDivider"
             app:layout_constraintTop_toBottomOf="@+id/tvChangeName" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -80,7 +98,7 @@
             android:textAlignment="center"
             android:textAppearance="?attr/textAppearanceBodyLarge"
             app:layout_constraintBottom_toTopOf="@id/tvWeekly"
-            app:layout_constraintEnd_toStartOf="@id/tvMonthlyName"
+            app:layout_constraintEnd_toStartOf="@id/verticalDivider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCurrent" />
 
@@ -88,13 +106,14 @@
             android:id="@+id/tvWeekly"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAlignment="center"
             android:textAppearance="?attr/textAppearanceTitleLarge"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tvMonthly"
+            app:layout_constraintEnd_toStartOf="@id/verticalDivider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWeeklyName" />
 
@@ -110,13 +129,14 @@
             android:textAppearance="?attr/textAppearanceBodyLarge"
             app:layout_constraintBottom_toTopOf="@id/tvMonthly"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvWeeklyName"
+            app:layout_constraintStart_toEndOf="@id/verticalDivider"
             app:layout_constraintTop_toBottomOf="@+id/tvChange" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvMonthly"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:textAlignment="center"
@@ -124,7 +144,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/tvWeekly"
+            app:layout_constraintStart_toEndOf="@id/verticalDivider"
             app:layout_constraintTop_toBottomOf="@+id/tvMonthlyName" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
