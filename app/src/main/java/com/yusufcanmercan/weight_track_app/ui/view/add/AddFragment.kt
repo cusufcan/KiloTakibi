@@ -94,7 +94,10 @@ class AddFragment : BottomSheetDialogFragment() {
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH),
-        ).apply { show() }
+        ).apply {
+            datePicker.maxDate = Calendar.getInstance().timeInMillis
+            show()
+        }
     }
 
     private fun dismissDialog() {
