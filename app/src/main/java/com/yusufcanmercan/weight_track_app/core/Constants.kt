@@ -7,4 +7,7 @@ object Constants {
     val localeEn: Locale = Locale.US
     private val localeTr = Locale("tr", "TR")
     val formatter = SimpleDateFormat("dd MMMM yyyy", localeTr)
+
+    const val WEEK = 7
+    const val MONTH = 30
 }
