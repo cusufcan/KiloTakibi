@@ -57,8 +57,7 @@ class WeightViewModel @Inject constructor(
             updateWeightData()
         }
     }
-
-
+    
     private fun calculateWeightStat(weights: List<Weight>): WeightStat {
         val lastSecond = if (weights.size > 1) {
             weights[1].weight
