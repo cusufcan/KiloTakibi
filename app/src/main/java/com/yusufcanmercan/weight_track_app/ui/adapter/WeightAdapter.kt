@@ -8,8 +8,11 @@ import com.yusufcanmercan.weight_track_app.databinding.WeightListItemBinding
 
 class WeightAdapter(
     private val weights: List<Weight>,
-    private val onWeightLongClick: (Weight) -> Unit,
+    private val onEditClick: (Weight) -> Unit,
+    private val onDeleteClick: (Weight) -> Unit,
 ) : RecyclerView.Adapter<WeightViewHolder>() {
+    private var selectedPosition = RecyclerView.NO_POSITION
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WeightViewHolder {
         val binding = WeightListItemBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -17,13 +20,27 @@ class WeightAdapter(
             false,
         )
 
-        return WeightViewHolder(binding, onWeightLongClick)
+        return WeightViewHolder(binding, onEditClick, onDeleteClick)
     }
 
     override fun onBindViewHolder(holder: WeightViewHolder, position: Int) {
         val weight = weights[position]
-        holder.bind(weight)
+        holder.bind(weight, selectedPosition == position) {
+            updateSelection(position)
+        }
     }
 
     override fun getItemCount() = weights.size
+
+    private fun updateSelection(position: Int) {
+        val previousPosition = selectedPosition
+        selectedPosition = if (previousPosition == position) {
+            RecyclerView.NO_POSITION
+        } else {
+            position
+        }
+
+        notifyItemChanged(previousPosition)
+        notifyItemChanged(selectedPosition)
+    }
 }
