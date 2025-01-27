@@ -31,7 +31,6 @@ class EditFragment : DialogFragment() {
     private lateinit var etWeight: TextInputEditText
     private lateinit var btnPickDate: MaterialButton
     private lateinit var btnCancel: MaterialButton
-    private lateinit var btnDelete: MaterialButton
     private lateinit var btnOk: MaterialButton
 
     private lateinit var calendar: Calendar
@@ -76,7 +75,6 @@ class EditFragment : DialogFragment() {
         etWeight = binding.etWeight
         btnPickDate = binding.btnPickDate
         btnCancel = binding.btnCancel
-        btnDelete = binding.btnDelete
         btnOk = binding.btnOk
     }
 
@@ -90,7 +88,6 @@ class EditFragment : DialogFragment() {
         etWeight.addTextChangedListener { setBtnOkEnabled(!it.isNullOrEmpty()) }
         btnPickDate.setOnClickListener { showDatePicker() }
         btnCancel.setOnClickListener { dismissDialog() }
-        btnDelete.setOnClickListener { deleteDate() }
         btnOk.setOnClickListener { updateDate() }
     }
 
@@ -117,11 +114,6 @@ class EditFragment : DialogFragment() {
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH),
         ).apply { show() }
-    }
-
-    private fun deleteDate() {
-        weightViewModel.deleteWeight(weight)
-        dismissDialog()
     }
 
     private fun updateDate() {
