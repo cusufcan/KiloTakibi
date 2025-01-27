@@ -12,11 +12,14 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
+import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentHomeBinding
 import com.yusufcanmercan.weight_track_app.ui.adapter.WeightAdapter
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
+import com.yusufcanmercan.weight_track_app.util.showAlertDialog
+import com.yusufcanmercan.weight_track_app.util.showSnackbar
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -110,7 +113,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun onDeleteClick(weight: Weight) {
-        
+        showAlertDialog(requireContext(),
+            getString(R.string.delete),
+            getString(R.string.delete_description),
+            positiveButtonClickListener = {
+                weightViewModel.deleteWeight(weight)
+                showSnackbar(binding.root, getString(R.string.delete_completed))
+            })
     }
 
     override fun onDestroyView() {
