@@ -1,22 +1,32 @@
 <resources>
     <string name="app_name">Kilo Takibi</string>
 
+    <!-- General -->
     <string name="home">Anasayfa</string>
     <string name="graph">Grafik</string>
-    <string name="add">Ekle</string>
     <string name="current">Güncel</string>
     <string name="change">Değişim</string>
     <string name="weekly">Haftalık</string>
     <string name="monthly">Aylık</string>
-    <string name="weight_icon">Kilo İkonu</string>
     <string name="weight_str">%skg</string>
-    <string name="add_a_record">Yeni kayıt ekle</string>
-    <string name="update">Güncelle</string>
-    <string name="x">x</string>
-    <string name="weight">Kilo</string>
-    <string name="cancel">İptal</string>
-    <string name="delete">Sil</string>
-    <string name="ok">Tamam</string>
+
+    <!-- Accessibility -->
+    <string name="weight_icon">Kilo İkonu</string>
+    <string name="add">Ekle</string>
     <string name="pick_date">Tarih Seç</string>
-    <string name="error_weight_already_exist">Bu tarihte veri zaten eklenmiş</string>
+
+    <!-- Dialog -->
+    <string name="add_a_record">Yeni kayıt ekle</string>
+    <string name="weight">Kilo</string>
+    <string name="ok">Tamam</string>
+    <string name="yes">Evet</string>
+    <string name="cancel">İptal</string>
+    <string name="update">Güncelle</string>
+    <string name="delete">Sil</string>
+    <string name="x">x</string>
+
+    <!-- Comment -->
+    <string name="error_weight_already_exist">Bu tarihte veri zaten eklenmiş.</string>
+    <string name="delete_description">Bu kaydı silmek istediğinize emin misiniz?</string>
+    <string name="delete_completed">Silme işlemi başarıyla tamamlandı.</string>
 </resources>
