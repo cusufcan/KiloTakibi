@@ -9,7 +9,7 @@ class WeightRepository @Inject constructor(
     private val weightLocalSource: WeightLocalSource,
 ) {
     suspend fun getAllWeights(): List<Weight> {
-        return weightLocalSource.getAllWeights().sortedByDescending { convertToDate(it.date) }
+        return weightLocalSource.getAllWeights().sortedBy { convertToDate(it.date) }
     }
 
     suspend fun addWeight(weight: Weight): Boolean {
