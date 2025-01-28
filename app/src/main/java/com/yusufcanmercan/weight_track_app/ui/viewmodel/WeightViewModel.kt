@@ -59,8 +59,8 @@ class WeightViewModel @Inject constructor(
     }
 
     private fun calculateWeightStat(weights: List<Weight>): WeightStat {
-        val current = weights.firstOrNull()?.weight ?: Constants.DOUBLE_ZERO
-        val lastSecond = weights.getOrNull(1)?.weight ?: Constants.DOUBLE_ZERO
+        val current = weights.lastOrNull()?.weight ?: Constants.DOUBLE_ZERO
+        val lastSecond = weights.dropLast(1).lastOrNull()?.weight ?: Constants.DOUBLE_ZERO
         val change = lastSecond.let { current.minus(it) }
         val weekly = calculateChangeInPeriod(weights, Constants.WEEK)
         val monthly = calculateChangeInPeriod(weights, Constants.MONTH)
@@ -71,7 +71,7 @@ class WeightViewModel @Inject constructor(
     private fun calculateChangeInPeriod(weights: List<Weight>, period: Int): Double {
         if (weights.isEmpty()) return Constants.DOUBLE_ZERO
 
-        val lastWeight = weights.first()
+        val lastWeight = weights.last()
         val currentDate = Constants.formatter.parse(lastWeight.date)!!
         val targetDate = currentDate.minusDays(period)
         val targetDateString = Constants.formatter.format(targetDate)
