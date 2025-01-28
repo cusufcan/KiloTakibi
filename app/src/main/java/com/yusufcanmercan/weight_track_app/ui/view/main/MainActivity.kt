@@ -17,6 +17,7 @@ import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
 import com.yusufcanmercan.weight_track_app.databinding.MainCardBinding
 import com.yusufcanmercan.weight_track_app.ui.view.home.HomeFragmentDirections
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
+import com.yusufcanmercan.weight_track_app.util.formatWeight
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -96,10 +97,11 @@ class MainActivity : AppCompatActivity() {
     private fun observeData() {
         lifecycleScope.launch {
             weightViewModel.weightStat.collect {
-                mainCard.tvCurrent.text = it.current.toString()
-                mainCard.tvChange.text = it.change.toString()
-                mainCard.tvWeekly.text = it.weekly.toString()
-                mainCard.tvMonthly.text = it.monthly.toString()
+                val context = mainCard.root.context
+                mainCard.tvCurrent.text = it.current.formatWeight(context)
+                mainCard.tvChange.text = it.change.formatWeight(context)
+                mainCard.tvWeekly.text = it.weekly.formatWeight(context)
+                mainCard.tvMonthly.text = it.monthly.formatWeight(context)
             }
         }
     }

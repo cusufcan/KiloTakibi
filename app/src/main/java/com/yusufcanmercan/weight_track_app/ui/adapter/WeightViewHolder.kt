@@ -3,9 +3,9 @@ package com.yusufcanmercan.weight_track_app.ui.adapter
 import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import com.yusufcanmercan.weight_track_app.R
-import com.yusufcanmercan.weight_track_app.core.Constants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.WeightListItemBinding
+import com.yusufcanmercan.weight_track_app.util.formatWeight
 import com.yusufcanmercan.weight_track_app.util.hideWithAnim
 import com.yusufcanmercan.weight_track_app.util.showWithAnim
 
@@ -20,8 +20,7 @@ class WeightViewHolder(
     }
 
     private fun bindViews(weight: Weight, isSelected: Boolean) {
-        val weightString = String.format(Constants.localeEn, "%.2f", weight.weight)
-        binding.tvWeight.text = binding.root.context.getString(R.string.weight_str, weightString)
+        binding.tvWeight.text = weight.weight.formatWeight(binding.root.context)
         binding.tvDate.text = weight.date
 
         val activeColor = binding.root.context.getColor(R.color.active)
