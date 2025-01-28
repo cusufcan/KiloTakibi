@@ -75,4 +75,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+
+    // GraphView
+    implementation(libs.graphview)
 }
