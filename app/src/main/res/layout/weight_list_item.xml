@@ -62,7 +62,7 @@
             android:contentDescription="@string/weight_icon"
             android:focusable="true"
             android:src="@drawable/ic_edit_outlined"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivDelete"
             app:layout_constraintStart_toEndOf="@id/tvWeight"
