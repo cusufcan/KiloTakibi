@@ -8,7 +8,7 @@
     <string name="change">Değişim</string>
     <string name="weekly">Haftalık</string>
     <string name="monthly">Aylık</string>
-    <string name="weight_str">%skg</string>
+    <string name="weight_string">%skg</string>
 
     <!-- Accessibility -->
     <string name="weight_icon">Kilo İkonu</string>
