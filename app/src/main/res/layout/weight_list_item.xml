@@ -62,12 +62,12 @@
             android:contentDescription="@string/weight_icon"
             android:focusable="true"
             android:src="@drawable/ic_edit_outlined"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/ivDelete"
             app:layout_constraintStart_toEndOf="@id/tvWeight"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="?attr/colorPrimary" />
+            app:tint="?attr/colorOnBackground" />
 
         <ImageView
             android:id="@+id/ivDelete"
