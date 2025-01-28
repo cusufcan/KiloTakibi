@@ -1,5 +1,6 @@
 package com.yusufcanmercan.weight_track_app.ui.adapter
 
+import android.graphics.Color
 import androidx.recyclerview.widget.RecyclerView
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.core.Constants
@@ -23,11 +24,14 @@ class WeightViewHolder(
         binding.tvWeight.text = binding.root.context.getString(R.string.weight_str, weightString)
         binding.tvDate.text = weight.date
 
-        binding.root.isSelected = isSelected
+        val activeColor = binding.root.context.getColor(R.color.active)
+
         if (isSelected) {
+            binding.constraintLayout.setBackgroundColor(activeColor)
             binding.ivEdit.showWithAnim()
             binding.ivDelete.showWithAnim()
         } else {
+            binding.constraintLayout.setBackgroundColor(Color.TRANSPARENT)
             binding.ivEdit.hideWithAnim()
             binding.ivDelete.hideWithAnim()
         }
