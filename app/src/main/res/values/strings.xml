@@ -27,6 +27,13 @@
     <string name="delete">Sil</string>
     <string name="x">x</string>
 
+    <!-- Graph -->
+    <string name="one_week">1H</string>
+    <string name="one_month">1A</string>
+    <string name="three_month">3A</string>
+    <string name="one_year">1Y</string>
+    <string name="three_year">3Y</string>
+
     <!-- Comment -->
     <string name="error_weight_already_exist">Bu tarihte veri zaten eklenmiş.</string>
     <string name="delete_description">Bu kaydı silmek istediğinize emin misiniz?</string>
