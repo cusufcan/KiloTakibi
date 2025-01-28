@@ -32,6 +32,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var navController: NavController
 
+    private var adapter: WeightAdapter? = null
+
     private val weightViewModel: WeightViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -64,6 +66,10 @@ class HomeFragment : Fragment() {
             val direction = HomeFragmentDirections.actionHomeFragmentToAddFragment()
             navController.navigate(direction)
         }
+
+        binding.root.setOnClickListener {
+            adapter?.resetSelection()
+        }
     }
 
     private fun observeData() {
@@ -95,7 +101,7 @@ class HomeFragment : Fragment() {
             recyclerView.visibility = View.VISIBLE
         }
 
-        val adapter = WeightAdapter(weights, ::onEditClick, ::onDeleteClick)
+        adapter = WeightAdapter(weights, ::onEditClick, ::onDeleteClick)
         recyclerView.adapter = adapter
     }
 

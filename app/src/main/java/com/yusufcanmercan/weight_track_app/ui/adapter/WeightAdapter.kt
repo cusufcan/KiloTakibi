@@ -43,4 +43,10 @@ class WeightAdapter(
         notifyItemChanged(previousPosition)
         notifyItemChanged(selectedPosition)
     }
+
+    fun resetSelection() {
+        val previousPosition = selectedPosition
+        selectedPosition = RecyclerView.NO_POSITION
+        notifyItemChanged(previousPosition)
+    }
 }
