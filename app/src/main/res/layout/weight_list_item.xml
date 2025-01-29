@@ -22,9 +22,26 @@
             android:background="@drawable/ic_monitor_weight_outlined"
             android:backgroundTint="?attr/colorTertiary"
             android:contentDescription="@string/weight_icon"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="@string/delete_icon"
+            android:focusable="true"
+            android:src="@drawable/ic_delete_outlined"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="?attr/colorError" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvWeight"
@@ -36,7 +53,7 @@
             android:textAppearance="?attr/textAppearanceTitleLarge"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@id/tvDate"
-            app:layout_constraintEnd_toStartOf="@id/ivEdit"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivIcon"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -49,41 +66,8 @@
             android:maxLines="1"
             android:textAppearance="?attr/textAppearanceBodyLarge"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ivEdit"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/ivIcon"
             app:layout_constraintTop_toBottomOf="@id/tvWeight" />
-
-        <ImageView
-            android:id="@+id/ivEdit"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/edit_icon"
-            android:focusable="true"
-            android:src="@drawable/ic_edit_outlined"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/ivDelete"
-            app:layout_constraintStart_toEndOf="@id/tvWeight"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="?attr/colorOnBackground" />
-
-        <ImageView
-            android:id="@+id/ivDelete"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="8dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:contentDescription="@string/delete_icon"
-            android:focusable="true"
-            android:src="@drawable/ic_delete_outlined"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/ivEdit"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="?attr/colorError" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

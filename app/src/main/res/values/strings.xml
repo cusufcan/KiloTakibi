@@ -12,7 +12,6 @@
 
     <!-- Accessibility -->
     <string name="weight_icon">Kilo İkonu</string>
-    <string name="edit_icon">Düzenle İkonu</string>
     <string name="delete_icon">Sil İkonu</string>
     <string name="add">Ekle</string>
     <string name="pick_date">Tarih Seç</string>
