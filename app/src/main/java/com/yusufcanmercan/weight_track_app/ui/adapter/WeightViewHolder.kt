@@ -32,27 +32,32 @@ class WeightViewHolder(
         tvWeight = binding.tvWeight
         tvDate = binding.tvDate
 
-
-        binding.tvWeight.text = weight.weight.formatWeight(binding.root.context)
-        binding.tvDate.text = weight.date
-
-        val activeColor = binding.root.context.getColor(R.color.active)
-
-        if (isSelected) {
-            binding.constraintLayout.setBackgroundColor(activeColor)
-            binding.ivIcon.hideWithAnim()
-            binding.ivDelete.showWithAnim()
-        } else {
-            binding.constraintLayout.setBackgroundColor(Color.TRANSPARENT)
-            binding.ivIcon.showWithAnim()
-            binding.ivDelete.hideWithAnim()
-        }
+        setupViews(weight, isSelected)
     }
 
     private fun bindEvents(weight: Weight, onWeightClick: () -> Unit) {
         handleWeightClick(onWeightClick)
         handleDeleteClick(weight)
         handleLongClick(weight)
+    }
+
+    private fun setupViews(weight: Weight, isSelected: Boolean) {
+        tvWeight.text = weight.weight.formatWeight(binding.root.context)
+        tvDate.text = weight.date
+        handleSelected(isSelected)
+    }
+
+    private fun handleSelected(isSelected: Boolean) {
+        val activeColor = binding.root.context.getColor(R.color.active)
+        if (isSelected) {
+            binding.root.setBackgroundColor(activeColor)
+            ivIcon.hideWithAnim()
+            ivDelete.showWithAnim()
+        } else {
+            binding.root.setBackgroundColor(Color.TRANSPARENT)
+            ivIcon.showWithAnim()
+            ivDelete.hideWithAnim()
+        }
     }
 
     private fun handleWeightClick(onWeightClick: () -> Unit) {

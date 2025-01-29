@@ -1,8 +1,8 @@
 package com.yusufcanmercan.weight_track_app.data.model
 
 data class WeightStat(
-    val current: Double? = null,
-    val change: Double? = null,
-    val weekly: Double? = null,
-    val monthly: Double? = null,
+    val current: Double = 0.0,
+    val change: Double = 0.0,
+    val weekly: Double = 0.0,
+    val monthly: Double = 0.0,
 )
