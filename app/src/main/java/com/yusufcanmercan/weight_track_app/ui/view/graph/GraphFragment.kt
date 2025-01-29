@@ -29,7 +29,6 @@ class GraphFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         bindViews()
         bindEvents()
-        setStartDefaults()
     }
 
     private fun bindViews() {
@@ -46,10 +45,6 @@ class GraphFragment : Fragment() {
         btn3M.setOnClickListener {}
         btn1Y.setOnClickListener {}
         btn3Y.setOnClickListener {}
-    }
-
-    private fun setStartDefaults() {
-        btn1W.isChecked = true
     }
 
     override fun onDestroyView() {
