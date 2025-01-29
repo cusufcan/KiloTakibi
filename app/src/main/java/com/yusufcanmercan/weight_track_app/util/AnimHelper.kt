@@ -20,7 +20,7 @@ fun View.hideWithAnim(duration: Long = 150) {
         .setInterpolator(AccelerateDecelerateInterpolator())
         .setListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
-                this@hideWithAnim.visibility = View.GONE
+                this@hideWithAnim.visibility = View.INVISIBLE
             }
         })
 }
