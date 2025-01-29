@@ -9,9 +9,11 @@ import com.yusufcanmercan.weight_track_app.data.repository.WeightRepository
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
 import com.yusufcanmercan.weight_track_app.util.minusDays
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.Date
 import javax.inject.Inject
 
@@ -29,8 +31,10 @@ class WeightViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val weights = weights()
-                _weightStat.value = calculateWeightStat(weights)
+                val weightStat = calculateWeightStat(weights)
+
                 _weights.value = WeightUIState.Success(weights)
+                _weightStat.value = weightStat
             } catch (e: Exception) {
                 _weights.value = WeightUIState.Error(e.message ?: "Unknown error")
             }
@@ -38,14 +42,18 @@ class WeightViewModel @Inject constructor(
     }
 
     suspend fun addWeight(weight: Weight): Boolean {
-        val response = weightRepository.addWeight(weight)
+        val response = withContext(Dispatchers.IO) {
+            weightRepository.addWeight(weight)
+        }
         if (!response) return false
         updateWeightData()
         return true
     }
 
     suspend fun updateWeight(weight: Weight): Boolean {
-        val response = weightRepository.updateWeight(weight)
+        val response = withContext(Dispatchers.IO) {
+            weightRepository.updateWeight(weight)
+        }
         if (!response) return false
         updateWeightData()
         return true
@@ -53,7 +61,9 @@ class WeightViewModel @Inject constructor(
 
     fun deleteWeight(weight: Weight) {
         viewModelScope.launch {
-            weightRepository.deleteWeight(weight)
+            withContext(Dispatchers.IO) {
+                weightRepository.deleteWeight(weight)
+            }
             updateWeightData()
         }
     }
@@ -93,11 +103,18 @@ class WeightViewModel @Inject constructor(
         return null
     }
 
-    private suspend fun weights(): List<Weight> = weightRepository.getAllWeights()
+    private suspend fun weights(): List<Weight> {
+        return withContext(Dispatchers.IO) {
+            weightRepository.getAllWeights()
+        }
+    }
 
     private suspend fun updateWeightData() {
         val weights = weights()
-        _weightStat.value = calculateWeightStat(weights)
+        val weightStat = calculateWeightStat(weights)
+
         _weights.value = WeightUIState.Success(weights)
+        _weightStat.value = weightStat
+
     }
 }
