@@ -40,16 +40,16 @@ class GraphFragment : Fragment() {
         btn3Y = binding.btn3Y
     }
 
-    private fun setStartDefaults() {
-        btn1W.isChecked = true
-    }
-
     private fun bindEvents() {
         btn1W.setOnClickListener {}
         btn1M.setOnClickListener {}
         btn3M.setOnClickListener {}
         btn1Y.setOnClickListener {}
         btn3Y.setOnClickListener {}
+    }
+
+    private fun setStartDefaults() {
+        btn1W.isChecked = true
     }
 
     override fun onDestroyView() {
