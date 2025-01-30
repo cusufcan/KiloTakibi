@@ -101,7 +101,7 @@ class HomeFragment : Fragment() {
             recyclerView.visibility = View.VISIBLE
         }
 
-        adapter = WeightAdapter(weights, ::onDeleteClick, ::onLongClick)
+        adapter = WeightAdapter(weights.reversed(), ::onDeleteClick, ::onLongClick)
         recyclerView.adapter = adapter
     }
 
