@@ -41,4 +41,9 @@
             android:name="weight"
             app:argType="com.yusufcanmercan.weight_track_app.data.model.Weight" />
     </dialog>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.yusufcanmercan.weight_track_app.ui.view.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>
