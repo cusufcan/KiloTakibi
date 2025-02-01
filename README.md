@@ -1,6 +1,6 @@
 # 📱 Kilo Takibi
 
-Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip etmesini, grafik ile kilo grafiğini günlük olarak görmesini amaçlayan basit bir uygulama.
+Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip etmesini ve grafik yardımı ile kilo grafiğini günlük olarak görmesini amaçlayan basit bir uygulama.
 
 
 [![Get it on Google Play Store](https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg)](https://play.google.com/store/apps/details?id=com.yusufcanmercan.weight_track_app&pcampaignid=web_share)
