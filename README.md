@@ -16,7 +16,8 @@ Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip 
 ---
 
 ## 📸 Ekran Görüntüleri
-<!--![ScreenShotName](screenshot_link)-->
+![KiloTakibiLight](https://github.com/user-attachments/assets/27a134e9-0bbc-4112-a08e-84a6cee200eb)
+![KiloTakibiDark](https://github.com/user-attachments/assets/e0c75c87-8a2f-4304-8671-328122fb3897)
 
 ---
 
