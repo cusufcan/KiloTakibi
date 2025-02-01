@@ -4,6 +4,7 @@
     <!-- General -->
     <string name="home">Anasayfa</string>
     <string name="graph">Grafik</string>
+    <string name="settings">Ayarlar</string>
     <string name="current">Güncel</string>
     <string name="change">Değişim</string>
     <string name="weekly">Haftalık</string>
