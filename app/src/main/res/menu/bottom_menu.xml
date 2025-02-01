@@ -9,4 +9,9 @@
         android:id="@+id/graphFragment"
         android:icon="@drawable/ic_graph_outlined"
         android:title="@string/graph" />
+
+    <item
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/ic_settings_selector"
+        android:title="@string/settings" />
 </menu>
