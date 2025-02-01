@@ -26,7 +26,12 @@
         android:id="@+id/addFragment"
         android:name="com.yusufcanmercan.weight_track_app.ui.view.add.AddFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add">
+        <argument
+            android:name="selectedDate"
+            app:argType="string"
+            app:nullable="true" />
+    </dialog>
     <dialog
         android:id="@+id/editFragment"
         android:name="com.yusufcanmercan.weight_track_app.ui.view.edit.EditFragment"

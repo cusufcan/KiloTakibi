@@ -17,6 +17,7 @@ import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentHomeBinding
 import com.yusufcanmercan.weight_track_app.ui.adapter.WeightAdapter
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
+import com.yusufcanmercan.weight_track_app.ui.view.main.MainActivity
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.showAlertDialog
 import com.yusufcanmercan.weight_track_app.util.showSnackbar
@@ -63,7 +64,9 @@ class HomeFragment : Fragment() {
 
     private fun bindEvents() {
         etEmpty.setOnClickListener {
-            val direction = HomeFragmentDirections.actionHomeFragmentToAddFragment()
+            val activity = activity as MainActivity
+            val direction =
+                HomeFragmentDirections.actionHomeFragmentToAddFragment(activity.selectedDate)
             navController.navigate(direction)
         }
 

@@ -12,6 +12,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.yusufcanmercan.weight_track_app.R
+import com.yusufcanmercan.weight_track_app.core.Constants
 import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
 import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
 import com.yusufcanmercan.weight_track_app.databinding.MainCardBinding
@@ -20,6 +21,7 @@ import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.formatWeight
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -34,14 +36,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var floatingActionButton: FloatingActionButton
     private lateinit var bottomNavigationView: BottomNavigationView
 
+    lateinit var selectedDate: String
+
     private val weightViewModel: WeightViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_KiloTakibi)
-
         bindingCodes()
         defaultActivityCodes()
+        bindVariables()
         bindViews()
         bindEvents()
         fetchData()
@@ -59,6 +63,11 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+    }
+
+    private fun bindVariables() {
+        val calendar = Calendar.getInstance()
+        selectedDate = Constants.formatter.format(calendar.time)
     }
 
     private fun bindViews() {
@@ -116,7 +125,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openAddDialogFragment() {
-        val direction = HomeFragmentDirections.actionHomeFragmentToAddFragment()
+        val direction = HomeFragmentDirections.actionHomeFragmentToAddFragment(selectedDate)
         navHostFragment.navController.navigate(direction)
     }
 }

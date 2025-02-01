@@ -16,8 +16,8 @@ import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.core.Constants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentAddBinding
+import com.yusufcanmercan.weight_track_app.ui.view.main.MainActivity
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
-import com.yusufcanmercan.weight_track_app.util.today
 import com.yusufcanmercan.weight_track_app.util.view.CustomTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -47,14 +47,21 @@ class AddFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bindVariables()
         bindViews()
+        bindVariables()
         bindEvents()
-        setTodayDate()
     }
 
     private fun bindVariables() {
+        val selectedDate = arguments?.getString("selectedDate")
         calendar = Calendar.getInstance()
+
+        selectedDate?.let {
+            val date = Constants.formatter.parse(it)
+            calendar.time = date!!
+        }
+
+        btnPickDate.text = Constants.formatter.format(calendar.time)
     }
 
     private fun bindViews() {
@@ -81,10 +88,6 @@ class AddFragment : BottomSheetDialogFragment() {
         btnOk.setOnClickListener { saveDate() }
     }
 
-    private fun setTodayDate() {
-        btnPickDate.text = today()
-    }
-
     private fun setBtnOkEnabled(enable: Boolean) {
         btnOk.isEnabled = enable
     }
@@ -108,7 +111,9 @@ class AddFragment : BottomSheetDialogFragment() {
                     set(Calendar.MONTH, month)
                     set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 }
-                btnPickDate.text = Constants.formatter.format(calendar.time)
+                val selectedDate = Constants.formatter.format(calendar.time)
+                btnPickDate.text = selectedDate
+                (activity as MainActivity).selectedDate = selectedDate
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
