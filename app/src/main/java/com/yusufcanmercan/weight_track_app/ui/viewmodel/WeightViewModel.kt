@@ -7,7 +7,7 @@ import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.data.model.WeightStat
 import com.yusufcanmercan.weight_track_app.data.repository.WeightRepository
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
-import com.yusufcanmercan.weight_track_app.util.minusDays
+import com.yusufcanmercan.weight_track_app.util.helper.minusDays
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

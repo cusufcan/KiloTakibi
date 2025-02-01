@@ -7,9 +7,9 @@ import com.google.android.material.textview.MaterialTextView
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.WeightListItemBinding
-import com.yusufcanmercan.weight_track_app.util.formatWeight
-import com.yusufcanmercan.weight_track_app.util.hideWithAnim
-import com.yusufcanmercan.weight_track_app.util.showWithAnim
+import com.yusufcanmercan.weight_track_app.util.helper.formatWeight
+import com.yusufcanmercan.weight_track_app.util.helper.hideWithAnim
+import com.yusufcanmercan.weight_track_app.util.helper.showWithAnim
 
 class WeightViewHolder(
     private val binding: WeightListItemBinding,

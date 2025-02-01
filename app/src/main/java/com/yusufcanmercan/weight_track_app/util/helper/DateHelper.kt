@@ -1,14 +1,8 @@
-package com.yusufcanmercan.weight_track_app.util
+package com.yusufcanmercan.weight_track_app.util.helper
 
 import com.yusufcanmercan.weight_track_app.core.Constants
 import java.util.Calendar
 import java.util.Date
-
-fun today(): String {
-    val today = Date()
-    val formatter = Constants.formatter
-    return formatter.format(today)
-}
 
 fun convertToDate(dateString: String): Date {
     val formatter = Constants.formatter

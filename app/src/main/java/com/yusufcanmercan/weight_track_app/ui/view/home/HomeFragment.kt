@@ -19,8 +19,8 @@ import com.yusufcanmercan.weight_track_app.ui.adapter.WeightAdapter
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
 import com.yusufcanmercan.weight_track_app.ui.view.main.MainActivity
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
-import com.yusufcanmercan.weight_track_app.util.showAlertDialog
-import com.yusufcanmercan.weight_track_app.util.showSnackbar
+import com.yusufcanmercan.weight_track_app.util.helper.showAlertDialog
+import com.yusufcanmercan.weight_track_app.util.helper.showSnackbar
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {

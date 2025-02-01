@@ -1,4 +1,4 @@
-package com.yusufcanmercan.weight_track_app.util
+package com.yusufcanmercan.weight_track_app.util.helper
 
 import android.app.AlertDialog
 import android.content.Context

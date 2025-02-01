@@ -2,7 +2,7 @@ package com.yusufcanmercan.weight_track_app.data.repository
 
 import com.yusufcanmercan.weight_track_app.data.local.WeightLocalSource
 import com.yusufcanmercan.weight_track_app.data.model.Weight
-import com.yusufcanmercan.weight_track_app.util.convertToDate
+import com.yusufcanmercan.weight_track_app.util.helper.convertToDate
 import javax.inject.Inject
 
 class WeightRepository @Inject constructor(

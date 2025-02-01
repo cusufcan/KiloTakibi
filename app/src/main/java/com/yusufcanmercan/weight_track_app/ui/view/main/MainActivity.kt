@@ -18,7 +18,7 @@ import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
 import com.yusufcanmercan.weight_track_app.databinding.MainCardBinding
 import com.yusufcanmercan.weight_track_app.ui.view.home.HomeFragmentDirections
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
-import com.yusufcanmercan.weight_track_app.util.formatWeight
+import com.yusufcanmercan.weight_track_app.util.helper.formatWeight
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.util.Calendar
