@@ -81,6 +81,7 @@ class EditFragment : DialogFragment() {
     private fun bindValues() {
         etWeight.setText(String.format(Constants.localeEn, "%.2f", weight.weight))
         btnPickDate.text = weight.date
+        calendar.time = Constants.formatter.parse(weight.date)!!
     }
 
     private fun bindEvents() {
@@ -113,7 +114,10 @@ class EditFragment : DialogFragment() {
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
             calendar.get(Calendar.DAY_OF_MONTH),
-        ).apply { show() }
+        ).apply {
+            datePicker.maxDate = Calendar.getInstance().timeInMillis
+            show()
+        }
     }
 
     private fun updateDate() {
