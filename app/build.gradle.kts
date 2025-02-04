@@ -7,6 +7,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -78,4 +79,8 @@ dependencies {
 
     // MPAndroidChart
     implementation(libs.mpandroidchart)
+
+    // Firebase
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
 }
