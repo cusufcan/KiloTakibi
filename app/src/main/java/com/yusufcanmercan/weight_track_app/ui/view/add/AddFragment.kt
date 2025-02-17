@@ -16,7 +16,7 @@ import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.core.Constants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentAddBinding
-import com.yusufcanmercan.weight_track_app.ui.view.main.MainActivity
+import com.yusufcanmercan.weight_track_app.ui.view.activity.main.MainActivity
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.view.CustomTextWatcher
 import dagger.hilt.android.AndroidEntryPoint

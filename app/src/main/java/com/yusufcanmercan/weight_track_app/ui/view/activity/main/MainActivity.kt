@@ -1,4 +1,4 @@
-package com.yusufcanmercan.weight_track_app.ui.view.main
+package com.yusufcanmercan.weight_track_app.ui.view.activity.main
 
 import android.os.Bundle
 import androidx.activity.viewModels
