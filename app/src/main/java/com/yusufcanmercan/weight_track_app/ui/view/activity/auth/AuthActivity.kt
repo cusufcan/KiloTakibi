@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
 import com.yusufcanmercan.weight_track_app.R
@@ -17,12 +18,15 @@ class AuthActivity : AppCompatActivity() {
 
     private lateinit var materialToolbar: CustomToolbarBinding
 
+    private lateinit var btnAuth: MaterialButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_KiloTakibi)
         bindingCodes()
         defaultActivityCodes()
         bindViews()
+        bindEvents()
         checkUser()
     }
 
@@ -39,15 +43,26 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
+    private fun bindViews() {
+        materialToolbar = binding.toolBar
+        setSupportActionBar(materialToolbar.customToolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        materialToolbar = binding.toolBar
+        btnAuth = binding.btnAuth
+    }
+
+    private fun bindEvents() {
+        btnAuth.setOnClickListener {
+            
+        }
+    }
+
     private fun checkUser() {
         if (Firebase.auth.currentUser != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
         }
-    }
-
-    private fun bindViews() {
-        materialToolbar = binding.toolBar
     }
 }
