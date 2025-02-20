@@ -27,7 +27,7 @@
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="E-posta"
+            android:hint="@string/email"
             android:inputType="textEmailAddress"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -46,7 +46,7 @@
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="Şifre"
+            android:hint="@string/password"
             android:inputType="textPassword"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -57,7 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:layout_weight="1"
-        android:text="Giriş Yap"
+        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="@id/elPassword"
         app:layout_constraintTop_toBottomOf="@id/elPassword" />
 </androidx.constraintlayout.widget.ConstraintLayout>
