@@ -14,15 +14,19 @@
         android:theme="@style/Theme.KiloTakibi"
         tools:targetApi="31">
         <activity
-            android:name=".ui.view.activity.main.MainActivity"
+            android:name=".ui.view.activity.auth.AuthActivity"
             android:exported="true"
-            android:theme="@style/Theme.MyApp.Splash"
-            android:windowSoftInputMode="adjustPan">
+            android:theme="@style/Theme.MyApp.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.view.activity.main.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MyApp.Splash"
+            android:windowSoftInputMode="adjustPan" />
     </application>
 </manifest>
