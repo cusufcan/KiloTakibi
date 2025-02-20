@@ -11,6 +11,11 @@
     <string name="monthly">Aylık</string>
     <string name="weight_string">%skg</string>
 
+    <!-- Auth -->
+    <string name="email">E-posta</string>
+    <string name="password">Şifre</string>
+    <string name="login">Giriş Yap</string>
+
     <!-- Accessibility -->
     <string name="weight_icon">Kilo İkonu</string>
     <string name="delete_icon">Sil İkonu</string>
@@ -38,7 +43,4 @@
     <string name="error_weight_already_exist">Bu tarihte veri zaten eklenmiş.</string>
     <string name="delete_description">Bu kaydı silmek istediğinize emin misiniz?</string>
     <string name="delete_completed">Silme işlemi başarıyla tamamlandı.</string>
-    <string name="email">E-posta</string>
-    <string name="password">Şifre</string>
-    <string name="login">Giriş Yap</string>
 </resources>
