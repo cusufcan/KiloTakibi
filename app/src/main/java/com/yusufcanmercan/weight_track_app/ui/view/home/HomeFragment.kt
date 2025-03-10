@@ -15,7 +15,7 @@ import com.google.android.material.textview.MaterialTextView
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentHomeBinding
-import com.yusufcanmercan.weight_track_app.ui.adapter.WeightAdapter
+import com.yusufcanmercan.weight_track_app.ui.adapter.weight.WeightAdapter
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
 import com.yusufcanmercan.weight_track_app.ui.view.activity.main.MainActivity
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel

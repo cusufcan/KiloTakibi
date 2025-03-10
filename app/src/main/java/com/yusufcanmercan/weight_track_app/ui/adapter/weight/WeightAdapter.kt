@@ -1,4 +1,4 @@
-package com.yusufcanmercan.weight_track_app.ui.adapter
+package com.yusufcanmercan.weight_track_app.ui.adapter.weight
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
