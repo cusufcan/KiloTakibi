@@ -14,6 +14,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.IOException
 import java.util.Date
 import javax.inject.Inject
 
@@ -35,7 +36,7 @@ class WeightViewModel @Inject constructor(
 
                 _weights.value = WeightUIState.Success(weights)
                 _weightStat.value = weightStat
-            } catch (e: Exception) {
+            } catch (e: IOException) {
                 _weights.value = WeightUIState.Error(e.message ?: "Unknown error")
             }
         }
