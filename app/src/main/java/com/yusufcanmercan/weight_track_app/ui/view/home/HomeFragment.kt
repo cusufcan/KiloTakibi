@@ -122,7 +122,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun onDeleteClick(weight: Weight) {
-        showAlertDialog(requireContext(),
+        showAlertDialog(
+            requireContext(),
             getString(R.string.delete),
             getString(R.string.delete_description),
             positiveButtonClickListener = {
