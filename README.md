@@ -1,4 +1,4 @@
-# 📱 Kilo Takibi
+# Kilo Takibi
 
 Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip etmesini ve grafik yardımı ile kilo grafiğini günlük olarak görmesini amaçlayan basit bir uygulama.
 
@@ -7,7 +7,7 @@ Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip 
 
 ---
 
-## 🛠️ Özellikler
+## Özellikler
 
 - Manuel input ile kilo verisi ekleyip listelenmesi.
 - Eklenen kilo verilerinin grafik yardımıyla gösterilmesi.
@@ -15,13 +15,13 @@ Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip 
 
 ---
 
-## 📸 Ekran Görüntüleri
+## Ekran Görüntüleri
 ![KiloTakibiLight](https://github.com/user-attachments/assets/27a134e9-0bbc-4112-a08e-84a6cee200eb)
 ![KiloTakibiDark](https://github.com/user-attachments/assets/e0c75c87-8a2f-4304-8671-328122fb3897)
 
 ---
 
-## 🛠️ Kullanılan Teknolojiler
+## Kullanılan Teknolojiler
 
 - **Kotlin Kapt**: Proje içinde veri bağlama veya DI (bağımlılık enjeksiyonu) işlemlerinde kullanılan, derleme zamanında anotasyonları işleyerek kod üretimini kolaylaştıran bir araçtır.
 - **Kotlin Ksp**: Daha hızlı kod üretimi için kullanılan, özellikle Room gibi veri tabanı bileşenleriyle uyumlu bir sembol işleme aracıdır.
@@ -35,7 +35,7 @@ Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip 
 
 ---
 
-## 📢 Proje Yapısı
+## Proje Yapısı
 
 ```
 /app
@@ -63,14 +63,14 @@ Kulllanıcının manuel olarak girmiş olduğu kilo verileri ile kilosunu takip 
 
 ---
 
-## 🛡️ Lisans
+## Lisans
 
 Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına
 bakabilirsiniz.
 
 ---
 
-## 📞 İletişim
+## İletişim
 
 Herhangi bir soru veya öneriniz varsa, benimle iletişime geçebilirsiniz:
 
