@@ -14,12 +14,12 @@ plugins {
 
 android {
     namespace = "com.yusufcanmercan.weight_track_app"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.yusufcanmercan.weight_track_app"
         minSdk = 25
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 19
         versionName = "2.0.7"
 
