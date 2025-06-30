@@ -13,13 +13,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.yusufcanmercan.weight_track_app.R
+import com.yusufcanmercan.weight_track_app.core.FragmentConstants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentHomeBinding
 import com.yusufcanmercan.weight_track_app.ui.adapter.weight.WeightAdapter
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
 import com.yusufcanmercan.weight_track_app.ui.view.activity.main.MainActivity
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
-import com.yusufcanmercan.weight_track_app.util.helper.showAlertDialog
 import com.yusufcanmercan.weight_track_app.util.helper.showSnackbar
 import kotlinx.coroutines.launch
 
@@ -50,6 +50,7 @@ class HomeFragment : Fragment() {
         bindViews()
         bindEvents()
         observeData()
+        setupDeleteResultListener()
     }
 
     private fun bindVariables() {
@@ -104,7 +105,7 @@ class HomeFragment : Fragment() {
             recyclerView.visibility = View.VISIBLE
         }
 
-        adapter = WeightAdapter(weights.reversed(), ::onDeleteClick, ::onLongClick)
+        adapter = WeightAdapter(weights.reversed().toMutableList(), ::onEditClick)
         recyclerView.adapter = adapter
     }
 
@@ -116,20 +117,21 @@ class HomeFragment : Fragment() {
         etEmpty.text = message
     }
 
-    private fun onLongClick(weight: Weight) {
+    private fun onEditClick(weight: Weight) {
         val direction = HomeFragmentDirections.actionHomeFragmentToEditFragment(weight)
         findNavController().navigate(direction)
     }
 
-    private fun onDeleteClick(weight: Weight) {
-        showAlertDialog(
-            requireContext(),
-            getString(R.string.delete),
-            getString(R.string.delete_description),
-            positiveButtonClickListener = {
-                weightViewModel.deleteWeight(weight)
-                showSnackbar(binding.root, getString(R.string.delete_completed))
-            })
+    private fun setupDeleteResultListener() {
+        parentFragmentManager.setFragmentResultListener(
+            FragmentConstants.DELETE_REQUEST_KEY,
+            viewLifecycleOwner,
+        ) { _, bundle ->
+            val weightId = bundle.getLong(FragmentConstants.WEIGHT_ID_KEY)
+            val weight = adapter?.getItemById(weightId)
+            weightViewModel.deleteWeight(weight!!)
+            showSnackbar(binding.root, getString(R.string.delete_completed))
+        }
     }
 
     override fun onDestroyView() {

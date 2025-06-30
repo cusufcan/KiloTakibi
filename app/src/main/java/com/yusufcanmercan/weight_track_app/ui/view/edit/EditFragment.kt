@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
@@ -15,9 +16,11 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.core.Constants
+import com.yusufcanmercan.weight_track_app.core.FragmentConstants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentEditBinding
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
+import com.yusufcanmercan.weight_track_app.util.helper.showAlertDialog
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
@@ -31,6 +34,7 @@ class EditFragment : DialogFragment() {
     private lateinit var etWeight: TextInputEditText
     private lateinit var btnPickDate: MaterialButton
     private lateinit var btnCancel: MaterialButton
+    private lateinit var btnDelete: MaterialButton
     private lateinit var btnOk: MaterialButton
 
     private lateinit var calendar: Calendar
@@ -75,6 +79,7 @@ class EditFragment : DialogFragment() {
         etWeight = binding.etWeight
         btnPickDate = binding.btnPickDate
         btnCancel = binding.btnCancel
+        btnDelete = binding.btnDelete
         btnOk = binding.btnOk
     }
 
@@ -89,6 +94,7 @@ class EditFragment : DialogFragment() {
         etWeight.addTextChangedListener { setBtnOkEnabled(!it.isNullOrEmpty()) }
         btnPickDate.setOnClickListener { showDatePicker() }
         btnCancel.setOnClickListener { dismissDialog() }
+        btnDelete.setOnClickListener { showDeleteDialog() }
         btnOk.setOnClickListener { updateDate() }
     }
 
@@ -133,6 +139,21 @@ class EditFragment : DialogFragment() {
                 etWeight.error = getString(R.string.error_weight_already_exist)
             }
         }
+    }
+
+    private fun showDeleteDialog() {
+        showAlertDialog(
+            requireContext(),
+            getString(R.string.delete),
+            getString(R.string.delete_description),
+            positiveButtonClickListener = {
+                parentFragmentManager.setFragmentResult(
+                    FragmentConstants.DELETE_REQUEST_KEY,
+                    bundleOf(FragmentConstants.WEIGHT_ID_KEY to weight.id)
+                )
+                dismissDialog()
+            },
+        )
     }
 
     override fun onDestroyView() {

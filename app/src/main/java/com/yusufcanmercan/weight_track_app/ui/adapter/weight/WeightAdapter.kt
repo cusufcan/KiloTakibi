@@ -42,6 +42,10 @@ class WeightAdapter(
         notifyItemChanged(previousPosition)
         notifyItemChanged(selectedPosition)
     }
+    
+    fun getItemById(id: Long): Weight? {
+        return weights.find { it.id == id }
+    }
 
     fun resetSelection() {
         val previousPosition = selectedPosition

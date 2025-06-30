@@ -82,8 +82,23 @@
         android:text="@string/cancel"
         android:textColor="?attr/colorOnBackground"
         app:cornerRadius="8dp"
-        app:layout_constraintEnd_toStartOf="@id/btnOk"
+        app:layout_constraintEnd_toStartOf="@id/btnDelete"
         app:layout_constraintStart_toStartOf="@id/btnPickDate"
+        app:layout_constraintTop_toBottomOf="@id/btnPickDate" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnDelete"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:backgroundTint="?attr/colorError"
+        android:layout_marginTop="8dp"
+        android:text="@string/delete"
+        android:textColor="@android:color/white"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toStartOf="@id/btnOk"
+        app:layout_constraintStart_toEndOf="@id/btnCancel"
         app:layout_constraintTop_toBottomOf="@id/btnPickDate" />
 
     <com.google.android.material.button.MaterialButton
@@ -97,6 +112,6 @@
         android:textColor="@android:color/white"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="@id/btnPickDate"
-        app:layout_constraintStart_toEndOf="@id/btnCancel"
+        app:layout_constraintStart_toEndOf="@id/btnDelete"
         app:layout_constraintTop_toBottomOf="@id/btnPickDate" />
 </androidx.constraintlayout.widget.ConstraintLayout>
