@@ -13,11 +13,10 @@ import com.yusufcanmercan.weight_track_app.util.helper.showWithAnim
 
 class WeightViewHolder(
     private val binding: WeightListItemBinding,
-    private val onDeleteClick: (Weight) -> Unit,
-    private val onLongClick: (Weight) -> Unit,
+    private val onEditClick: (Weight) -> Unit,
 ) : RecyclerView.ViewHolder(binding.root) {
     private lateinit var ivIcon: ImageView
-    private lateinit var ivDelete: ImageView
+    private lateinit var ivEdit: ImageView
     private lateinit var tvWeight: MaterialTextView
     private lateinit var tvDate: MaterialTextView
 
@@ -28,7 +27,7 @@ class WeightViewHolder(
 
     private fun bindViews(weight: Weight, isSelected: Boolean) {
         ivIcon = binding.ivIcon
-        ivDelete = binding.ivDelete
+        ivEdit = binding.ivEdit
         tvWeight = binding.tvWeight
         tvDate = binding.tvDate
 
@@ -37,8 +36,7 @@ class WeightViewHolder(
 
     private fun bindEvents(weight: Weight, onWeightClick: () -> Unit) {
         handleWeightClick(onWeightClick)
-        handleDeleteClick(weight)
-        handleLongClick(weight)
+        handleEditClick(weight)
     }
 
     private fun setupViews(weight: Weight, isSelected: Boolean) {
@@ -52,11 +50,11 @@ class WeightViewHolder(
         if (isSelected) {
             binding.root.setBackgroundColor(activeColor)
             ivIcon.hideWithAnim()
-            ivDelete.showWithAnim()
+            ivEdit.showWithAnim()
         } else {
             binding.root.setBackgroundColor(Color.TRANSPARENT)
             ivIcon.showWithAnim()
-            ivDelete.hideWithAnim()
+            ivEdit.hideWithAnim()
         }
     }
 
@@ -66,16 +64,9 @@ class WeightViewHolder(
         }
     }
 
-    private fun handleDeleteClick(weight: Weight) {
-        binding.ivDelete.setOnClickListener {
-            onDeleteClick(weight)
-        }
-    }
-
-    private fun handleLongClick(weight: Weight) {
-        binding.root.setOnLongClickListener {
-            onLongClick(weight)
-            true
+    private fun handleEditClick(weight: Weight) {
+        binding.ivEdit.setOnClickListener {
+            onEditClick(weight)
         }
     }
 }

@@ -7,9 +7,8 @@ import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.WeightListItemBinding
 
 class WeightAdapter(
-    private val weights: List<Weight>,
-    private val onDeleteClick: (Weight) -> Unit,
-    private val onLongClick: (Weight) -> Unit,
+    private val weights: MutableList<Weight>,
+    private val onEditClick: (Weight) -> Unit,
 ) : RecyclerView.Adapter<WeightViewHolder>() {
     private var selectedPosition = RecyclerView.NO_POSITION
 
@@ -20,7 +19,7 @@ class WeightAdapter(
             false,
         )
 
-        return WeightViewHolder(binding, onDeleteClick, onLongClick)
+        return WeightViewHolder(binding, onEditClick)
     }
 
     override fun onBindViewHolder(holder: WeightViewHolder, position: Int) {
