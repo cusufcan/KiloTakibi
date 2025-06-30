@@ -20,7 +20,7 @@
             android:layout_height="32dp"
             android:layout_marginStart="12dp"
             android:background="@drawable/ic_monitor_weight_outlined"
-            android:backgroundTint="?attr/colorTertiary"
+            android:backgroundTint="?attr/colorPrimary"
             android:contentDescription="@string/weight_icon"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -28,20 +28,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/ivDelete"
+            android:id="@+id/ivEdit"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginStart="12dp"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:contentDescription="@string/delete_icon"
+            android:contentDescription="@string/edit_icon"
             android:focusable="true"
-            android:src="@drawable/ic_delete_outlined"
+            android:src="@drawable/ic_edit_outlined"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="?attr/colorError" />
+            app:tint="?attr/colorPrimary" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvWeight"
