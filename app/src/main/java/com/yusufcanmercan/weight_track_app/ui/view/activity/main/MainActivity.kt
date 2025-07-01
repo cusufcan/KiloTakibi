@@ -93,6 +93,7 @@ class MainActivity : AppCompatActivity() {
             when (destination.id) {
                 R.id.homeFragment -> fabOnDestinationChangeLogic(true)
                 R.id.graphFragment -> fabOnDestinationChangeLogic(false)
+                R.id.settingsFragment -> fabOnDestinationChangeLogic(false)
             }
         }
 
