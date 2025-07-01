@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="24dp"
+    android:padding="16dp"
     tools:context=".ui.view.edit.EditFragment">
 
     <com.google.android.material.textview.MaterialTextView
@@ -74,11 +74,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnCancel"
+        style="@style/Widget.Material3.Button.IconButton.Filled"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
+        android:maxLines="1"
         android:backgroundTint="?attr/colorSurfaceVariant"
+        android:ellipsize="end"
         android:text="@string/cancel"
         android:textColor="?attr/colorOnBackground"
         app:cornerRadius="8dp"
@@ -90,12 +92,13 @@
         android:id="@+id/btnDelete"
         style="@style/Widget.Material3.Button.IconButton.Filled"
         android:layout_width="0dp"
+        android:maxLines="1"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:backgroundTint="?attr/colorError"
         android:layout_marginTop="8dp"
         android:text="@string/delete"
         android:textColor="@android:color/white"
+        android:ellipsize="end"
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toStartOf="@id/btnOk"
         app:layout_constraintStart_toEndOf="@id/btnCancel"
@@ -104,9 +107,10 @@
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnOk"
         style="@style/Widget.Material3.Button.IconButton.Filled"
+        android:ellipsize="end"
         android:layout_width="0dp"
+        android:maxLines="1"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="@string/ok"
         android:textColor="@android:color/white"
