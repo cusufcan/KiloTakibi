@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
-    android:paddingHorizontal="32dp"
-    android:paddingVertical="24dp"
+    android:paddingHorizontal="24dp"
+    android:paddingVertical="16dp"
     tools:context=".ui.view.add.AddFragment">
 
     <com.google.android.material.textview.MaterialTextView
