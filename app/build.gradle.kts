@@ -96,4 +96,7 @@ dependencies {
 
     // Play Services Auth
     implementation(libs.play.services.auth)
+
+    // Data Store
+    implementation(libs.androidx.datastore.preferences)
 }
