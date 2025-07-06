@@ -17,6 +17,7 @@ import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
 import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
 import com.yusufcanmercan.weight_track_app.databinding.MainCardBinding
 import com.yusufcanmercan.weight_track_app.ui.view.home.HomeFragmentDirections
+import com.yusufcanmercan.weight_track_app.ui.viewmodel.SettingsViewModel
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.helper.formatWeight
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var selectedDate: String
 
     private val weightViewModel: WeightViewModel by viewModels()
+    private val settingsViewModel: SettingsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         bindViews()
         bindEvents()
         fetchData()
-        observeData()
+        observeWeightStats()
     }
 
     private fun bindingCodes() {
@@ -104,7 +106,7 @@ class MainActivity : AppCompatActivity() {
         weightViewModel.fetchData()
     }
 
-    private fun observeData() {
+    private fun observeWeightStats() {
         lifecycleScope.launch {
             weightViewModel.weightStat.collect {
                 val context = mainCard.root.context
