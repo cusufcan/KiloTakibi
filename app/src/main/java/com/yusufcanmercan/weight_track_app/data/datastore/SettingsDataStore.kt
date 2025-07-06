@@ -20,8 +20,8 @@ class SettingsDataStore @Inject constructor(
 ) {
     private val darkModeKey = booleanPreferencesKey("dark_mode")
 
-    val isDarkMode: Flow<Boolean> = context.dataStore.data.map { preferences ->
-        preferences[darkModeKey] ?: false
+    val isDarkMode: Flow<Boolean?> = context.dataStore.data.map { preferences ->
+        preferences[darkModeKey]
     }
 
     suspend fun setDarkMode(isDarkMode: Boolean) {

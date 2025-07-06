@@ -25,7 +25,7 @@ class SettingsViewModel @Inject constructor(
     private fun observeDarkMode() {
         viewModelScope.launch(Dispatchers.IO) {
             repository.darkModeFlow.collect { enabled ->
-                _darkMode.value = enabled
+                _darkMode.value = enabled == true
             }
         }
     }
