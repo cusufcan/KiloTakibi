@@ -2,6 +2,7 @@ package com.yusufcanmercan.weight_track_app.di
 
 import android.content.Context
 import androidx.room.Room
+import com.yusufcanmercan.weight_track_app.data.datastore.SettingsDataStore
 import com.yusufcanmercan.weight_track_app.data.local.WeightDatabase
 import dagger.Module
 import dagger.Provides
@@ -22,4 +23,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideWeightDao(weightDatabase: WeightDatabase) = weightDatabase.getWeightDao()
+
+    @Singleton
+    @Provides
+    fun provideSettingsDataStore(@ApplicationContext context: Context): SettingsDataStore {
+        return SettingsDataStore(context)
+    }
 }
