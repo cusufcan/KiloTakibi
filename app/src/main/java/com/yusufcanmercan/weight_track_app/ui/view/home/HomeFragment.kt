@@ -65,6 +65,7 @@ class HomeFragment : Fragment() {
 
     private fun bindEvents() {
         etEmpty.setOnClickListener {
+            etEmpty.isEnabled = false
             val activity = activity as MainActivity
             val direction =
                 HomeFragmentDirections.actionHomeFragmentToAddFragment(activity.selectedDate)
@@ -77,6 +78,13 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeData() {
+        parentFragmentManager.setFragmentResultListener(
+            FragmentConstants.ADD_FRAGMENT_RESULT_KEY,
+            viewLifecycleOwner,
+        ) { _, bundle ->
+            etEmpty.isEnabled = true
+        }
+
         lifecycleScope.launch {
             weightViewModel.weights.collect {
                 when (it) {

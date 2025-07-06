@@ -1,6 +1,7 @@
 package com.yusufcanmercan.weight_track_app.ui.view.add
 
 import android.app.DatePickerDialog
+import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
 import android.view.LayoutInflater
@@ -14,6 +15,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.yusufcanmercan.weight_track_app.R
 import com.yusufcanmercan.weight_track_app.core.Constants
+import com.yusufcanmercan.weight_track_app.core.FragmentConstants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentAddBinding
 import com.yusufcanmercan.weight_track_app.ui.view.activity.main.MainActivity
@@ -139,7 +141,21 @@ class AddFragment : BottomSheetDialogFragment() {
         }
     }
 
+    private fun enableHomeButtons() {
+        val result = Bundle()
+        parentFragmentManager.setFragmentResult(
+            FragmentConstants.ADD_FRAGMENT_RESULT_KEY,
+            result,
+        )
+    }
+
     private fun dismissDialog() {
+        enableHomeButtons()
         dismiss()
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        super.onDismiss(dialog)
+        enableHomeButtons()
     }
 }
