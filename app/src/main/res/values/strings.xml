@@ -43,4 +43,7 @@
     <string name="error_weight_already_exist">Bu tarihte veri zaten eklenmiş.</string>
     <string name="delete_description">Bu kaydı silmek istediğinize emin misiniz?</string>
     <string name="delete_completed">Silme işlemi başarıyla tamamlandı.</string>
+
+    <!-- Settings -->
+    <string name="dark_mode">Koyu Tema</string>
 </resources>
