@@ -7,9 +7,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.google.android.material.materialswitch.MaterialSwitch
 import com.yusufcanmercan.weight_track_app.databinding.FragmentSettingsBinding
 import com.yusufcanmercan.weight_track_app.databinding.ItemDarkModeBinding
@@ -62,10 +60,8 @@ class SettingsFragment : Fragment() {
 
     private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                settingsViewModel.isDarkMode.collectLatest { isDarkMode ->
-                    switchDarkMode.isChecked = isDarkMode
-                }
+            settingsViewModel.isDarkMode.collectLatest { isDarkMode ->
+                switchDarkMode.isChecked = isDarkMode
             }
         }
     }
