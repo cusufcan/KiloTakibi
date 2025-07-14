@@ -10,4 +10,7 @@ class SettingsRepository @Inject constructor(
 ) {
     suspend fun setDarkMode(enabled: Boolean) = dataStore.setDarkMode(enabled)
     val darkModeFlow = dataStore.isDarkMode
+
+    suspend fun setLanguage(language: String) = dataStore.setSelectedLanguage(language)
+    val selectedLanguageFlow = dataStore.selectedLanguage
 }
