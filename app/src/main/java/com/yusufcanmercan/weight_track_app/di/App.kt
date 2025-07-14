@@ -3,6 +3,7 @@ package com.yusufcanmercan.weight_track_app.di
 import android.app.Application
 import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import com.yusufcanmercan.weight_track_app.data.repository.SettingsRepository
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
@@ -19,6 +20,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initializeDarkMode()
+        initializeLanguage()
     }
 
     private fun initializeDarkMode() {
@@ -34,6 +36,17 @@ class App : Application() {
                     settingsRepository.setDarkMode(isSystemDarkMode)
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
                 }
+            }
+        }
+    }
+
+    private fun initializeLanguage() {
+        CoroutineScope(Dispatchers.Default).launch {
+            val language = settingsRepository.selectedLanguageFlow.first()
+            if (language != null) {
+                AppCompatDelegate.setApplicationLocales(
+                    LocaleListCompat.forLanguageTags(language)
+                )
             }
         }
     }

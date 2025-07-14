@@ -1,13 +1,21 @@
 package com.yusufcanmercan.weight_track_app.util.helper
 
-import com.yusufcanmercan.weight_track_app.core.Constants
+import androidx.appcompat.app.AppCompatDelegate
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+import java.util.Locale
 
-fun convertToDate(dateString: String): Date {
-    val formatter = Constants.formatter
-    val date = formatter.parse(dateString)
-    return date ?: throw Exception("Invalid date format")
+fun Long.toDateStr(): String {
+    val locale = AppCompatDelegate.getApplicationLocales()[0] ?: Locale.getDefault()
+    val formatter = SimpleDateFormat("dd MMMM yyyy", locale)
+    return formatter.format(Date(this))
+}
+
+fun String.toDate(): Date? {
+    val locale = AppCompatDelegate.getApplicationLocales()[0] ?: Locale.getDefault()
+    val formatter = SimpleDateFormat("dd MMMM yyyy", locale)
+    return formatter.parse(this)
 }
 
 fun Date.minusDays(days: Int): Date {

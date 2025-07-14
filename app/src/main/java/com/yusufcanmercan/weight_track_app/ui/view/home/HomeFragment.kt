@@ -68,7 +68,7 @@ class HomeFragment : Fragment() {
             etEmpty.isEnabled = false
             val activity = activity as MainActivity
             val direction =
-                HomeFragmentDirections.actionHomeFragmentToAddFragment(activity.selectedDate)
+                HomeFragmentDirections.actionHomeFragmentToAddFragment(activity.selectedDate ?: 0L)
             navController.navigate(direction)
         }
 

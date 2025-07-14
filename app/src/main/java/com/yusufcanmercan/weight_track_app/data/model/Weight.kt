@@ -10,5 +10,5 @@ import kotlinx.parcelize.Parcelize
 data class Weight(
     @PrimaryKey(autoGenerate = true) val id: Long = 0,
     val weight: Double,
-    val date: String,
+    val timeStamp: Long,
 ) : Parcelable

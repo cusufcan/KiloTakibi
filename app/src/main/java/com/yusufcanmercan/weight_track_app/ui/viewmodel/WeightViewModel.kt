@@ -8,6 +8,8 @@ import com.yusufcanmercan.weight_track_app.data.model.WeightStat
 import com.yusufcanmercan.weight_track_app.data.repository.WeightRepository
 import com.yusufcanmercan.weight_track_app.ui.state.WeightUIState
 import com.yusufcanmercan.weight_track_app.util.helper.minusDays
+import com.yusufcanmercan.weight_track_app.util.helper.toDate
+import com.yusufcanmercan.weight_track_app.util.helper.toDateStr
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -83,13 +85,15 @@ class WeightViewModel @Inject constructor(
         if (weights.isEmpty()) return Constants.DOUBLE_ZERO
 
         val lastWeight = weights.last()
-        val currentDate = Constants.formatter.parse(lastWeight.date)!!
+        val lastDate = lastWeight.timeStamp.toDateStr()
+        val currentDate = lastDate.toDate()!!
         val targetDate = currentDate.minusDays(period)
-        val targetDateString = Constants.formatter.format(targetDate)
+        val targetDateString = targetDate.time.toDateStr()
 
-        val foundWeight = weights.find { it.date == targetDateString } ?: findWeightInLastNDays(
-            weights, targetDate, period
-        )
+        val foundWeight =
+            weights.find { it.timeStamp.toDateStr() == targetDateString } ?: findWeightInLastNDays(
+                weights, targetDate, period
+            )
 
         return foundWeight?.let { lastWeight.weight - it.weight } ?: Constants.DOUBLE_ZERO
     }
@@ -97,8 +101,8 @@ class WeightViewModel @Inject constructor(
     private fun findWeightInLastNDays(weights: List<Weight>, targetDate: Date, days: Int): Weight? {
         for (i in 1..<days) {
             val checkDate = targetDate.minusDays(i)
-            val checkDateString = Constants.formatter.format(checkDate)
-            val foundWeight = weights.find { it.date == checkDateString }
+            val checkDateString = checkDate.time.toDateStr()
+            val foundWeight = weights.find { it.timeStamp.toDateStr() == checkDateString }
             if (foundWeight != null) return foundWeight
         }
         return null

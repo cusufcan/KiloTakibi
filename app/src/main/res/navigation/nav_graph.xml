@@ -29,8 +29,8 @@
         tools:layout="@layout/fragment_add">
         <argument
             android:name="selectedDate"
-            app:argType="string"
-            app:nullable="true" />
+            android:defaultValue="0L"
+            app:argType="long" />
     </dialog>
     <dialog
         android:id="@+id/editFragment"

@@ -12,7 +12,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.yusufcanmercan.weight_track_app.R
-import com.yusufcanmercan.weight_track_app.core.Constants
 import com.yusufcanmercan.weight_track_app.databinding.ActivityMainBinding
 import com.yusufcanmercan.weight_track_app.databinding.CustomToolbarBinding
 import com.yusufcanmercan.weight_track_app.databinding.MainCardBinding
@@ -37,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var floatingActionButton: FloatingActionButton
     private lateinit var bottomNavigationView: BottomNavigationView
 
-    lateinit var selectedDate: String
+    var selectedDate: Long? = null
 
     private val weightViewModel: WeightViewModel by viewModels()
     private val settingsViewModel: SettingsViewModel by viewModels()
@@ -69,7 +68,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun bindVariables() {
         val calendar = Calendar.getInstance()
-        selectedDate = Constants.formatter.format(calendar.time)
+        selectedDate = calendar.timeInMillis
     }
 
     private fun bindViews() {
@@ -128,7 +127,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun openAddDialogFragment() {
-        val direction = HomeFragmentDirections.actionHomeFragmentToAddFragment(selectedDate)
+        val direction = HomeFragmentDirections.actionHomeFragmentToAddFragment(selectedDate ?: 0L)
         navHostFragment.navController.navigate(direction)
     }
 }

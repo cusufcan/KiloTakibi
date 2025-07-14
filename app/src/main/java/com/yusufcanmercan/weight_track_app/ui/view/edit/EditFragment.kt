@@ -21,6 +21,7 @@ import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentEditBinding
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.helper.showAlertDialog
+import com.yusufcanmercan.weight_track_app.util.helper.toDateStr
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
@@ -85,8 +86,8 @@ class EditFragment : DialogFragment() {
 
     private fun bindValues() {
         etWeight.setText(String.format(Constants.localeEn, "%.2f", weight.weight))
-        btnPickDate.text = weight.date
-        calendar.time = Constants.formatter.parse(weight.date)!!
+        btnPickDate.text = weight.timeStamp.toDateStr()
+        calendar.timeInMillis = weight.timeStamp
     }
 
     private fun bindEvents() {
@@ -115,7 +116,7 @@ class EditFragment : DialogFragment() {
                     set(Calendar.MONTH, month)
                     set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 }
-                btnPickDate.text = Constants.formatter.format(calendar.time)
+                btnPickDate.text = calendar.timeInMillis.toDateStr()
             },
             calendar.get(Calendar.YEAR),
             calendar.get(Calendar.MONTH),
@@ -128,9 +129,8 @@ class EditFragment : DialogFragment() {
 
     private fun updateDate() {
         val weightNumber = etWeight.text.toString().toDouble()
-        val date = btnPickDate.text.toString()
 
-        val newWeight = weight.copy(weight = weightNumber, date = date)
+        val newWeight = weight.copy(weight = weightNumber, timeStamp = calendar.timeInMillis)
         lifecycleScope.launch {
             val response = weightViewModel.updateWeight(newWeight)
             if (response) {

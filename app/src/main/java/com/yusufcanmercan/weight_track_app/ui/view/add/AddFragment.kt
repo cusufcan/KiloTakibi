@@ -14,12 +14,12 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
 import com.yusufcanmercan.weight_track_app.R
-import com.yusufcanmercan.weight_track_app.core.Constants
 import com.yusufcanmercan.weight_track_app.core.FragmentConstants
 import com.yusufcanmercan.weight_track_app.data.model.Weight
 import com.yusufcanmercan.weight_track_app.databinding.FragmentAddBinding
 import com.yusufcanmercan.weight_track_app.ui.view.activity.main.MainActivity
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
+import com.yusufcanmercan.weight_track_app.util.helper.toDateStr
 import com.yusufcanmercan.weight_track_app.util.view.CustomTextWatcher
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -38,6 +38,8 @@ class AddFragment : BottomSheetDialogFragment() {
 
     private lateinit var calendar: Calendar
 
+    private var selectedDate: Long? = null
+
     private val weightViewModel: WeightViewModel by activityViewModels()
 
     override fun onCreateView(
@@ -55,15 +57,14 @@ class AddFragment : BottomSheetDialogFragment() {
     }
 
     private fun bindVariables() {
-        val selectedDate = arguments?.getString("selectedDate")
+        selectedDate = arguments?.getLong("selectedDate")
         calendar = Calendar.getInstance()
 
         selectedDate?.let {
-            val date = Constants.formatter.parse(it)
-            calendar.time = date!!
+            calendar.timeInMillis = it
         }
 
-        btnPickDate.text = Constants.formatter.format(calendar.time)
+        btnPickDate.text = calendar.timeInMillis.toDateStr()
     }
 
     private fun bindViews() {
@@ -113,8 +114,8 @@ class AddFragment : BottomSheetDialogFragment() {
                     set(Calendar.MONTH, month)
                     set(Calendar.DAY_OF_MONTH, dayOfMonth)
                 }
-                val selectedDate = Constants.formatter.format(calendar.time)
-                btnPickDate.text = selectedDate
+                selectedDate = calendar.timeInMillis
+                btnPickDate.text = selectedDate?.toDateStr()
                 (activity as MainActivity).selectedDate = selectedDate
             },
             calendar.get(Calendar.YEAR),
@@ -128,15 +129,16 @@ class AddFragment : BottomSheetDialogFragment() {
 
     private fun saveDate() {
         val weightNumber = etWeight.text.toString().toDouble()
-        val date = btnPickDate.text.toString()
 
-        val weight = Weight(weight = weightNumber, date = date)
-        lifecycleScope.launch {
-            val response = weightViewModel.addWeight(weight)
-            if (response) {
-                dismissDialog()
-            } else {
-                etWeight.error = getString(R.string.error_weight_already_exist)
+        selectedDate?.let {
+            val weight = Weight(weight = weightNumber, timeStamp = it)
+            lifecycleScope.launch {
+                val response = weightViewModel.addWeight(weight)
+                if (response) {
+                    dismissDialog()
+                } else {
+                    etWeight.error = getString(R.string.error_weight_already_exist)
+                }
             }
         }
     }

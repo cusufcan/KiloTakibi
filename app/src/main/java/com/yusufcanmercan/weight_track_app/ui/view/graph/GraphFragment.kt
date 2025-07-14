@@ -11,6 +11,7 @@ import com.yusufcanmercan.weight_track_app.databinding.FragmentGraphBinding
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.GraphViewModel
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.graph.CustomLineChart
+import com.yusufcanmercan.weight_track_app.util.helper.toDateStr
 
 
 class GraphFragment : Fragment() {
@@ -47,7 +48,7 @@ class GraphFragment : Fragment() {
 
     private fun setupChart() {
         val data = graphViewModel.chartData
-        val values = graphViewModel.weights.map { it.date }.toTypedArray()
+        val values = graphViewModel.weights.map { it.timeStamp.toDateStr() }.toTypedArray()
 
         lineChart.setupChartData(data)
         lineChart.setupChartAxises(values)

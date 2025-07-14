@@ -10,6 +10,7 @@ import com.yusufcanmercan.weight_track_app.databinding.WeightListItemBinding
 import com.yusufcanmercan.weight_track_app.util.helper.formatWeight
 import com.yusufcanmercan.weight_track_app.util.helper.hideWithAnim
 import com.yusufcanmercan.weight_track_app.util.helper.showWithAnim
+import com.yusufcanmercan.weight_track_app.util.helper.toDateStr
 
 class WeightViewHolder(
     private val binding: WeightListItemBinding,
@@ -41,7 +42,7 @@ class WeightViewHolder(
 
     private fun setupViews(weight: Weight, isSelected: Boolean) {
         tvWeight.text = weight.weight.formatWeight(binding.root.context)
-        tvDate.text = weight.date
+        tvDate.text = weight.timeStamp.toDateStr()
         handleSelected(isSelected)
     }
 

@@ -21,4 +21,5 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "KiloTakibi"
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
