@@ -11,3 +11,19 @@ fun Double?.formatWeight(context: Context): String {
     val weightString = weightStripped?.toPlainString()
     return context.getString(R.string.weight_string, weightString)
 }
+
+fun String.convertToISO639(): String {
+    return when (this) {
+        "Türkçe" -> "tr"
+        "English" -> "en"
+        else -> "en"
+    }
+}
+
+fun String.convertToLanguage(): String {
+    return when (this) {
+        "tr" -> "Türkçe"
+        "en" -> "English"
+        else -> "English"
+    }
+}

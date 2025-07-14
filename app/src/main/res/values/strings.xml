@@ -46,4 +46,11 @@
 
     <!-- Settings -->
     <string name="dark_mode">Koyu Tema</string>
+    <string name="app_language">Uygulama Dili</string>
+
+    <!-- Language -->
+    <string-array name="languages">
+        <item>English</item>
+        <item>Türkçe</item>
+    </string-array>
 </resources>

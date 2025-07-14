@@ -18,7 +18,7 @@
         app:layout_constraintBottom_toBottomOf="@id/switchDarkMode"
         app:layout_constraintEnd_toStartOf="@id/switchDarkMode"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/switchDarkMode" />
 
     <com.google.android.material.materialswitch.MaterialSwitch
         android:id="@+id/switchDarkMode"
