@@ -20,8 +20,8 @@ android {
         applicationId = "com.yusufcanmercan.weight_track_app"
         minSdk = 25
         targetSdk = 36
-        versionCode = 19
-        versionName = "2.0.7"
+        versionCode = 20
+        versionName = "2.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
