@@ -21,6 +21,7 @@ import com.yusufcanmercan.weight_track_app.databinding.MainCardBinding
 import com.yusufcanmercan.weight_track_app.ui.view.home.HomeFragmentDirections
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.SettingsViewModel
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
+import com.yusufcanmercan.weight_track_app.util.AppLogger
 import com.yusufcanmercan.weight_track_app.util.helper.formatWeight
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -55,6 +56,7 @@ class MainActivity : AppCompatActivity() {
         bindEvents()
         fetchData()
         observeWeightStats()
+        observeDarkMode()
         observeLanguage()
     }
 
@@ -119,6 +121,24 @@ class MainActivity : AppCompatActivity() {
                 mainCard.tvChange.text = it.change.formatWeight(context)
                 mainCard.tvWeekly.text = it.weekly.formatWeight(context)
                 mainCard.tvMonthly.text = it.monthly.formatWeight(context)
+            }
+        }
+    }
+
+    private fun observeDarkMode() {
+        lifecycleScope.launch {
+            settingsViewModel.isDarkMode.collectLatest {
+                AppLogger.d("isDarkMode: $it")
+                val currentNightMode = AppCompatDelegate.getDefaultNightMode()
+                val isNightMode = if (it) {
+                    AppCompatDelegate.MODE_NIGHT_YES
+                } else {
+                    AppCompatDelegate.MODE_NIGHT_NO
+                }
+
+                if (currentNightMode != isNightMode) {
+                    AppCompatDelegate.setDefaultNightMode(isNightMode)
+                }
             }
         }
     }

@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -19,7 +18,6 @@ import com.yusufcanmercan.weight_track_app.ui.viewmodel.SettingsViewModel
 import com.yusufcanmercan.weight_track_app.util.helper.toISO639
 import com.yusufcanmercan.weight_track_app.util.helper.toLanguage
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -76,11 +74,6 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private fun bindEvents() {
         switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
             settingsViewModel.setDarkMode(isChecked)
-            viewLifecycleOwner.lifecycleScope.launch(Dispatchers.Main) {
-                AppCompatDelegate.setDefaultNightMode(
-                    if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
-                )
-            }
         }
 
         spinnerLanguage.onItemSelectedListener = this
