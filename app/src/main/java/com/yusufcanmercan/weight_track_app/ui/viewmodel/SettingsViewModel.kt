@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.yusufcanmercan.weight_track_app.data.repository.SettingsRepository
 import com.yusufcanmercan.weight_track_app.util.AppLogger
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -29,7 +28,7 @@ class SettingsViewModel @Inject constructor(
     }
 
     private fun observeDarkMode() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.darkModeFlow.collectLatest { enabled ->
                 _darkMode.value = enabled == true
             }
@@ -37,7 +36,7 @@ class SettingsViewModel @Inject constructor(
     }
 
     private fun observeSelectedLanguage() {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.selectedLanguageFlow.collectLatest { selectedLanguage ->
                 _selectedLanguage.value = selectedLanguage
             }
@@ -45,13 +44,13 @@ class SettingsViewModel @Inject constructor(
     }
 
     fun setDarkMode(enabled: Boolean) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.setDarkMode(enabled)
         }
     }
 
     fun setLanguage(language: String) {
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             AppLogger.d("setLanguage: $language")
             repository.setLanguage(language)
         }

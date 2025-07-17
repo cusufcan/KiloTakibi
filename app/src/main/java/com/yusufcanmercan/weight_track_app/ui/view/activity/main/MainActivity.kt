@@ -3,6 +3,8 @@ package com.yusufcanmercan.weight_track_app.ui.view.activity.main
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentContainerView
@@ -20,6 +22,7 @@ import com.yusufcanmercan.weight_track_app.ui.viewmodel.SettingsViewModel
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.WeightViewModel
 import com.yusufcanmercan.weight_track_app.util.helper.formatWeight
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
@@ -51,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         bindEvents()
         fetchData()
         observeWeightStats()
+        observeLanguage()
     }
 
     private fun bindingCodes() {
@@ -113,6 +117,20 @@ class MainActivity : AppCompatActivity() {
                 mainCard.tvChange.text = it.change.formatWeight(context)
                 mainCard.tvWeekly.text = it.weekly.formatWeight(context)
                 mainCard.tvMonthly.text = it.monthly.formatWeight(context)
+            }
+        }
+    }
+
+    private fun observeLanguage() {
+        lifecycleScope.launch {
+            settingsViewModel.selectedLanguage.collectLatest {
+                if (it == null) return@collectLatest
+
+                val currentLocales = AppCompatDelegate.getApplicationLocales()
+                val newLocales = LocaleListCompat.forLanguageTags(it)
+                if (currentLocales != newLocales) {
+                    AppCompatDelegate.setApplicationLocales(newLocales)
+                }
             }
         }
     }

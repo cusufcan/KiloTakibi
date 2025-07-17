@@ -12,7 +12,7 @@ fun Double?.formatWeight(context: Context): String {
     return context.getString(R.string.weight_string, weightString)
 }
 
-fun String.convertToISO639(): String {
+fun String.toISO639(): String {
     return when (this) {
         "Türkçe" -> "tr"
         "English" -> "en"
@@ -20,7 +20,7 @@ fun String.convertToISO639(): String {
     }
 }
 
-fun String.convertToLanguage(): String {
+fun String.toLanguage(): String {
     return when (this) {
         "tr" -> "Türkçe"
         "en" -> "English"

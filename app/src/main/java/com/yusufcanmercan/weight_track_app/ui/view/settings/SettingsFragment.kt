@@ -8,7 +8,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.os.LocaleListCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
@@ -17,8 +16,8 @@ import com.yusufcanmercan.weight_track_app.databinding.FragmentSettingsBinding
 import com.yusufcanmercan.weight_track_app.databinding.ItemDarkModeBinding
 import com.yusufcanmercan.weight_track_app.databinding.ItemLanguageBinding
 import com.yusufcanmercan.weight_track_app.ui.viewmodel.SettingsViewModel
-import com.yusufcanmercan.weight_track_app.util.helper.convertToISO639
-import com.yusufcanmercan.weight_track_app.util.helper.convertToLanguage
+import com.yusufcanmercan.weight_track_app.util.helper.toISO639
+import com.yusufcanmercan.weight_track_app.util.helper.toLanguage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -98,11 +97,11 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
             settingsViewModel.selectedLanguage.collectLatest { selectedLanguage ->
                 if (selectedLanguage == null) return@collectLatest
 
-                spinnerLanguage.setSelection(languages.indexOf(selectedLanguage.convertToLanguage()))
-
-                AppCompatDelegate.setApplicationLocales(
-                    LocaleListCompat.forLanguageTags(selectedLanguage)
-                )
+                val currentSelection = spinnerLanguage.selectedItemPosition
+                val newSelection = languages.indexOf(selectedLanguage.toLanguage())
+                if (currentSelection != newSelection) {
+                    spinnerLanguage.setSelection(newSelection)
+                }
             }
         }
     }
@@ -124,7 +123,7 @@ class SettingsFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
 
         val selectedLanguage = adapterView?.getItemAtPosition(position).toString()
-        settingsViewModel.setLanguage(selectedLanguage.convertToISO639())
+        settingsViewModel.setLanguage(selectedLanguage.toISO639())
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {}

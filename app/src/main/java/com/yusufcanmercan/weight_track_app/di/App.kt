@@ -47,6 +47,9 @@ class App : Application() {
                 AppCompatDelegate.setApplicationLocales(
                     LocaleListCompat.forLanguageTags(language)
                 )
+            } else {
+                val currentLanguage = resources.configuration.locales[0].language
+                settingsRepository.setLanguage(currentLanguage)
             }
         }
     }
