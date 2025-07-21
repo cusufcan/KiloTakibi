@@ -152,6 +152,7 @@ class MainActivity : AppCompatActivity() {
                 val newLocales = LocaleListCompat.forLanguageTags(it)
                 if (currentLocales != newLocales) {
                     AppCompatDelegate.setApplicationLocales(newLocales)
+                    recreate()
                 }
             }
         }
