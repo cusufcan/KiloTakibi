@@ -17,8 +17,8 @@ yardımı ile kilo grafiğini günlük olarak görmesini amaçlayan basit bir uy
 
 ## Ekran Görüntüleri
 
-![KiloTakibiLight](https://github.com/user-attachments/assets/27a134e9-0bbc-4112-a08e-84a6cee200eb)
-![KiloTakibiDark](https://github.com/user-attachments/assets/e0c75c87-8a2f-4304-8671-328122fb3897)
+![KiloTakibiLight](https://github.com/user-attachments/assets/79dcac52-eadb-46da-93ed-df35121bf0b0)
+![KiloTakibiDark](https://github.com/user-attachments/assets/bddf3473-0c1c-44e8-9e07-76f14c9ee3ea)
 
 ---
 
